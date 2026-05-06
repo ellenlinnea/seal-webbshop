@@ -12,8 +12,8 @@
       "popularity": 98,
       "personality": "lugn, eftertänksam",
       "traits": ["Älskar sill", "Ogillar måndagar", "Snarkar diskret"],
-      "bio": "Sture är en gentleman av den gamla skolan. Han uppskattar långa promenader på iskanten och en god middag med sill och nubbe.",
-      "image": null
+      "bio": "Sture är en gentleman av den gamla skolan. Han uppskattar långa promenader på stranden och en god middag med sill och nubbe.",
+      "image": "/sture.jpg"
     },
     {
       "id": 2,
@@ -28,7 +28,7 @@
       "personality": "social, busig",
       "traits": ["Pratar för mycket", "Älskar Eurovision", "Sjunger i duschen"],
       "bio": "Anna-Karin är hela hamnens drottning. Charmig, högljudd och fullständigt oemotståndlig på fredagar.",
-      "image": null
+      "image": "/anna-karin.jpg"
     },
     {
       "id": 3,
@@ -43,7 +43,7 @@
       "personality": "envis, mysig",
       "traits": ["Vägrar äta strömming", "Älskar P1", "Behöver morgonkaffe"],
       "bio": "Stig vet vad han vill, och vad han inte vill. Mest av allt vill han ligga i skärgården och fundera.",
-      "image": null
+      "image": "/stig.jpg"
     },
     {
       "id": 4,
@@ -57,8 +57,8 @@
       "popularity": 89,
       "personality": "omtänksam, klok",
       "traits": ["Bästa lyssnaren", "Ogillar oväsen", "Strikt med rutiner"],
-      "bio": "Birgitta är som en favoritmoster: alltid där med ett varmt blickfång och ibland ett strängt ord.",
-      "image": null
+      "bio": "Birgitta är som en favoritmoster: alltid där med ett varmt blickfång och ibland en sträng ton.",
+      "image": "/birgitta.jpg"
     },
     {
       "id": 5,
@@ -73,7 +73,7 @@
       "personality": "lekfull, energisk",
       "traits": ["Sover sällan", "Älskar bollar", "Stjäl tofflor"],
       "bio": "Bengt är ung och full av spring. Han skulle behöva en familj som har tålamod och många bollar.",
-      "image": null
+      "image": "/bengt.jpg"
     },
     {
       "id": 6,
@@ -88,7 +88,7 @@
       "personality": "värdig, försiktig",
       "traits": ["Dricker bara kallt vatten", "Älskar opera", "Mjukvarm"],
       "bio": "Margareta har sett mycket. Hon föredrar tystnad, klassisk musik och en god säng nära fönstret.",
-      "image": null
+      "image": "/margareta.jpg"
     },
     {
       "id": 7,
@@ -103,7 +103,7 @@
       "personality": "stoisk, pålitlig",
       "traits": ["Aldrig sen", "Punkt-säl", "Goda manér"],
       "bio": "Yngve har de bästa manér i hela hamnen. Han hälsar artigt, äter prydligt och tackar alltid för maten.",
-      "image": null
+      "image": "/yngve.jpg"
     },
     {
       "id": 8,
@@ -118,11 +118,11 @@
       "personality": "drömmande, mjuk",
       "traits": ["Stjärnskådare", "Älskar regn", "Sjunger i sömnen"],
       "bio": "Solveig är hela kustens romantiker. Hon kan ligga i timmar och titta på molnen.",
-      "image": null
+      "image": "/solveig.jpg"
     },
     {
       "id": 9,
-      "name": "Roger",
+      "name": "Ragnar",
       "age": 2,
       "sex": "hane",
       "size": "liten",
@@ -132,8 +132,8 @@
       "popularity": 65,
       "personality": "busig, nyfiken",
       "traits": ["Klättrar på allt", "Öppnar lådor", "Aldrig nöjd"],
-      "bio": "Roger är pojken som måste se allt först. Energisk, lite stökig, helt charmig.",
-      "image": null
+      "bio": "Ragnar är pojken som måste se allt först. Energisk, lite stökig, helt charmig.",
+      "image": "/ragnar.jpg"
     },
     {
       "id": 10,
@@ -148,7 +148,7 @@
       "personality": "tålmodig, varm",
       "traits": ["Bakar i tankarna", "Älskar barnbarn", "Ger råd ofta"],
       "bio": "Gunhild är säl-mormor par excellence. Hon är klok, varm och har alltid en historia på lager.",
-      "image": null
+      "image": "/gunhild.jpg"
     },
     {
       "id": 11,
@@ -163,11 +163,11 @@
       "personality": "jovialisk, högljudd",
       "traits": ["Berättar samma vits", "Ledare i flocken", "Stor aptit"],
       "bio": "Kjell-Åke är hela kompisgängets centrum. Stor, glad, och alltid den sista som lämnar bryggan.",
-      "image": null
+      "image": "/kjell-åke.jpg"
     },
     {
       "id": 12,
-      "name": "Inga-Britt",
+      "name": "Gun-Britt",
       "age": 5,
       "sex": "hona",
       "size": "mellan",
@@ -177,8 +177,8 @@
       "popularity": 91,
       "personality": "praktisk, smart",
       "traits": ["Räknar fiskar i sömnen", "Ordningsam", "Älskar listor"],
-      "bio": "Inga-Britt är säl-effektivitet personifierad. Hon vet alltid var allt är, och vad klockan är.",
-      "image": null
+      "bio": "Gun-Britt är säl-effektivitet personifierad. Hon vet alltid var allt är, och vad klockan är.",
+      "image": "/gun-britt.jpg"
     }
   ],
   "orders": [],

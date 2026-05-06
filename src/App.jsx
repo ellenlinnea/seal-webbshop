@@ -16,7 +16,7 @@ function App() {
         <Route path="/favoriter" element={<div>Favoriter</div>} />
         <Route path="/login" element={<div>Logga in</div>} />
         <Route path="*" element={<div>404</div>} />
-      </Routes>cat "src/components/Header.jsx"
+      </Routes>
     </BrowserRouter>
   )
 }

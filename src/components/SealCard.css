@@ -1,0 +1,140 @@
+.seal-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.seal-card:hover {
+  box-shadow: 0 8px 24px rgba(15, 42, 51, 0.1);
+  transform: translateY(-2px);
+}
+
+.seal-card__img-wrap {
+  position: relative;
+  display: block;
+  aspect-ratio: 4 / 3;
+  background: var(--accent-light);
+  overflow: hidden;
+}
+
+.seal-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.seal-card__img-placeholder {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-size: 72px;
+}
+
+.seal-card__fav {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: all 0.15s;
+  color: var(--dark-tertiary);
+}
+
+.seal-card__fav:hover,
+.seal-card__fav--active {
+  color: var(--accent-coral);
+  border-color: var(--accent-coral);
+}
+
+.seal-card__body {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.seal-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.seal-card__badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--accent-light);
+  color: var(--dark-secondary);
+  padding: 2px 8px;
+  border-radius: 999px;
+}
+
+.seal-card__size {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--dark-tertiary);
+}
+
+.seal-card__name-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.seal-card__name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.seal-card__personality {
+  font-size: 13px;
+  color: var(--dark-tertiary);
+}
+
+.seal-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 12px;
+}
+
+.seal-card__price {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--dark-primary);
+}
+
+.seal-card__btn {
+  background: var(--dark-primary);
+  color: var(--bg-primary);
+  border: none;
+  border-radius: 999px;
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.seal-card__btn:hover {
+  background: var(--dark-secondary);
+}
