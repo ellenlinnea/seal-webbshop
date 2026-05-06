@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap');
+/* Importerar fonts */
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  /* Mörka färger */
+  --dark-primary:   #0F2A33;
+  --dark-secondary: #1B3A4B;
+  --dark-tertiary:  #2C4A5A;
+
+  /* Accentfärger */
+  --accent-primary: #5C8A8F;
+  --accent-light:   #C3D6D2;
+  --accent-coral:   #D88A6E;
+
+  /* Bakgrundsfärger */
+  --bg-primary:     #EAF1F2;
+  --bg-secondary:   #F4F1EA;
+  --bg-card:        #FBFAF6;
+
+  /* Kanter */
+  --border-light:   rgba(15, 42, 51, 0.12);
+  --border-dark:    rgba(15, 42, 51, 0.22);
+
+  /* Typsnitt */
+  --font-display: 'Fraunces', serif;
+  --font-sans:    'Inter', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-primary);
+  color: var(--dark-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+*:focus-visible {
+  outline: 2px solid var(--dark-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
