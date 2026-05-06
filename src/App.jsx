@@ -1,8 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Header from './components/Header'
 
 function App() {
   return (
     <BrowserRouter>
+      <Header />
+
       <Routes>
         <Route path="/" element={<div>Hem</div>} />
         <Route path="/salar" element={<div>Sälbutiken</div>} />
@@ -13,7 +16,7 @@ function App() {
         <Route path="/favoriter" element={<div>Favoriter</div>} />
         <Route path="/login" element={<div>Logga in</div>} />
         <Route path="*" element={<div>404</div>} />
-      </Routes>
+      </Routes>cat "src/components/Header.jsx"
     </BrowserRouter>
   )
 }

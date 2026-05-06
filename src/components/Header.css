@@ -1,0 +1,112 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 64px;
+  background: var(--bg-primary);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.header__logo {
+  text-decoration: none;
+  color: var(--dark-primary);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.header__logo-img {
+  width: 48px;
+  height: 48px;
+}
+
+.header__logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.header__logo-name {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 22px;
+}
+
+.header__logo-sub {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+}
+
+.header__nav {
+  display: flex;
+  gap: 28px;
+}
+
+.header__nav a {
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--dark-tertiary);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
+  transition: color 0.15s;
+}
+
+.header__nav a.active,
+.header__nav a:hover {
+  color: var(--dark-primary);
+  border-bottom-color: var(--dark-primary);
+}
+
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header__icon-btn {
+  position: relative;
+  text-decoration: none;
+  font-size: 20px;
+  color: var(--dark-primary);
+  padding: 4px;
+}
+
+.header__badge {
+  position: absolute;
+  top: -4px;
+  right: -6px;
+  min-width: 16px;
+  height: 16px;
+  background: var(--accent-coral);
+  color: white;
+  border-radius: 999px;
+  font-size: 10px;
+  font-weight: 600;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-mono);
+}
+
+.header__login-btn {
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--dark-primary);
+  border: 1px solid var(--border-dark);
+  border-radius: 999px;
+  padding: 8px 18px;
+  transition: all 0.15s;
+}
+
+.header__login-btn:hover {
+  background: var(--dark-primary);
+  color: var(--bg-primary);
+}
