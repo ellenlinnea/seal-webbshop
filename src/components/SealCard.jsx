@@ -1,14 +1,15 @@
 import { Link } from 'react-router-dom'
 import './SealCard.css'
 
+// Tar emot en säl och funktioner för köp och favorit som props
 function SealCard({ seal, onAddToCart, onToggleFav, isFav = false }) {
   return (
     <article className="seal-card">
       <Link to={`/salar/${seal.id}`} className="seal-card__img-wrap">
+        {/* Visar bild om den finns, annars en emoji som backup */}
         {seal.image
           ? <img src={seal.image} alt={seal.name} className="seal-card__img" />
           : <div className="seal-card__img-placeholder">🦭</div>
-          // En backup med emoji ifall bilden inte laddas
         }
         <button
           className={`seal-card__fav ${isFav ? 'seal-card__fav--active' : ''}`}

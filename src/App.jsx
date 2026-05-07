@@ -2,6 +2,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { CartProvider, useCart } from './context/CartContext'
 import { FavsProvider, useFavs } from './context/FavsContext'
 import Header from './components/Header'
+import Footer from './components/Footer'
+import Home from './pages/Home'
 
 function AppContent() {
   const { cartCount } = useCart()
@@ -9,10 +11,11 @@ function AppContent() {
 
   return (
     <>
-      <Header cartCount={cartCount} favCount={favCount} />
+    {/* Header ligger här hela tiden på alla sidor */}
+      <Header cartCount={cartCount} favCount={favCount} /> 
 
       <Routes>
-        <Route path="/" element={<div>Hem</div>} />
+        <Route path="/" element={<Home />} />
         <Route path="/salar" element={<div>Sälbutiken</div>} />
         <Route path="/salar/:id" element={<div>Säl-detalj</div>} />
         <Route path="/varukorg" element={<div>Varukorg</div>} />
@@ -22,6 +25,8 @@ function AppContent() {
         <Route path="/login" element={<div>Logga in</div>} />
         <Route path="*" element={<div>404</div>} />
       </Routes>
+      <Footer />
+      {/* Footer ligger också utanför så den visas på alla sidor */}
     </>
   )
 }

@@ -89,6 +89,9 @@
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--dark-tertiary);
+  border: 1px solid var(--border-dark);
+  padding: 2px 8px;
+  border-radius: 999px;
 }
 
 .seal-card__name-link {

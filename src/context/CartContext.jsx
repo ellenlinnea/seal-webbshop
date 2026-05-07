@@ -1,46 +1,50 @@
 import { createContext, useContext, useState } from 'react'
 
+// Skapar själva context-objektet som håller varukorgens data
 const CartContext = createContext()
 
 export function CartProvider({ children }) {
+  // Läser från localStorage när sidan laddas, annars startar vi med tom varukorg
   const [cart, setCart] = useState(() => {
     const saved = localStorage.getItem('seal-cart')
     return saved ? JSON.parse(saved) : []
   })
 
+  // Hjälpfunktion som uppdaterar både state och localStorage samtidigt
   function saveCart(newCart) {
     setCart(newCart)
     localStorage.setItem('seal-cart', JSON.stringify(newCart))
   }
 
+  // Lägger till en säl i varukorgen - ska bara gå att lägga till om den inte redan finns där
   function addToCart(seal) {
     const exists = cart.find(item => item.id === seal.id)
-    if (exists) {
-      saveCart(cart.map(item =>
-        item.id === seal.id ? { ...item, quantity: item.quantity + 1 } : item
-      ))
-    } else {
-      saveCart([...cart, { ...seal, quantity: 1 }])
-    }
+    if (exists) return
+    saveCart([...cart, seal])
   }
 
+  // Tar bort en säl från varukorgen baserat på id
   function removeFromCart(sealId) {
     saveCart(cart.filter(item => item.id !== sealId))
   }
 
+  // Tömmer hela varukorgen, t.ex. efter genomförd beställning
   function clearCart() {
     saveCart([])
   }
 
-  const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0)
+  // Antal sälar i varukorgen
+  const cartCount = cart.length
 
   return (
+    // Gör cart och alla funktioner tillgängliga för alla komponenter under Provider
     <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, cartCount }}>
       {children}
     </CartContext.Provider>
   )
 }
 
+// Custom hook så man enkelt kan använda varukorgen med useCart()
 export function useCart() {
   return useContext(CartContext)
 }
