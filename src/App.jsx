@@ -1,10 +1,15 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { CartProvider, useCart } from './context/CartContext'
+import { FavsProvider, useFavs } from './context/FavsContext'
 import Header from './components/Header'
 
-function App() {
+function AppContent() {
+  const { cartCount } = useCart()
+  const { favCount } = useFavs()
+
   return (
-    <BrowserRouter>
-      <Header />
+    <>
+      <Header cartCount={cartCount} favCount={favCount} />
 
       <Routes>
         <Route path="/" element={<div>Hem</div>} />
@@ -17,6 +22,18 @@ function App() {
         <Route path="/login" element={<div>Logga in</div>} />
         <Route path="*" element={<div>404</div>} />
       </Routes>
+    </>
+  )
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <CartProvider>
+        <FavsProvider>
+          <AppContent />
+        </FavsProvider>
+      </CartProvider>
     </BrowserRouter>
   )
 }
