@@ -26,9 +26,12 @@ function SealCard({ seal, onAddToCart, onToggleFav, isFav = false }) {
           <span className="seal-card__size">{seal.size}</span>
         </div>
 
-        <Link to={`/salar/${seal.id}`} className="seal-card__name-link">
-          <h3 className="seal-card__name">{seal.name}</h3>
-        </Link>
+        <div className="seal-card__name-row">
+          <Link to={`/salar/${seal.id}`} className="seal-card__name-link">
+            <h3 className="seal-card__name">{seal.name}</h3>
+          </Link>
+          <span className="seal-card__age">{seal.age} år</span>
+        </div>
 
         <p className="seal-card__personality">{seal.personality}</p>
 

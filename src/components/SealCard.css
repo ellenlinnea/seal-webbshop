@@ -94,6 +94,13 @@
   border-radius: 999px;
 }
 
+.seal-card__name-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+}
+
 .seal-card__name-link {
   text-decoration: none;
   color: inherit;
@@ -104,6 +111,13 @@
   font-size: 20px;
   font-weight: 500;
   font-style: italic;
+}
+
+.seal-card__age {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--dark-tertiary);
+  white-space: nowrap;
 }
 
 .seal-card__personality {

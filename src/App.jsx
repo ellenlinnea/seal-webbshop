@@ -4,6 +4,7 @@ import { FavsProvider, useFavs } from './context/FavsContext'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './pages/Home'
+import SealList from './pages/SealList'
 
 function AppContent() {
   const { cartCount } = useCart()
@@ -16,7 +17,7 @@ function AppContent() {
 
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/salar" element={<div>Sälbutiken</div>} />
+        <Route path="/salar" element={<SealList />} />
         <Route path="/salar/:id" element={<div>Säl-detalj</div>} />
         <Route path="/varukorg" element={<div>Varukorg</div>} />
         <Route path="/kassa" element={<div>Kassa</div>} />

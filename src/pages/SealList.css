@@ -1,0 +1,161 @@
+.seal-list-page {
+  padding: 48px 64px;
+}
+
+.seal-list-page__layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.seal-list-page__header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 32px;
+}
+
+.seal-list-page__title {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.seal-list-page__count {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--dark-tertiary);
+  letter-spacing: 0.08em;
+}
+
+/* Filter sidebar */
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  position: sticky;
+  top: 96px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+.filters__heading {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dark-tertiary);
+  margin-bottom: 28px;
+}
+
+.filters__group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 24px 0;
+  border-top: 1px solid var(--border-light);
+}
+
+.filters__label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--dark-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-family: var(--font-mono);
+}
+
+/* Pill-knappar för filter */
+.filters__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.filters__chip {
+  background: none;
+  border: 1px solid var(--border-dark);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-size: 13px;
+  color: var(--dark-tertiary);
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: var(--font-sans);
+}
+
+.filters__chip:hover {
+  border-color: var(--dark-primary);
+  color: var(--dark-primary);
+}
+
+.filters__chip--active {
+  background: var(--dark-primary);
+  border-color: var(--dark-primary);
+  color: var(--bg-primary);
+}
+
+/* Checkbox för rumsren */
+.filters__checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--dark-tertiary);
+  cursor: pointer;
+}
+
+.filters__checkbox input {
+  accent-color: var(--dark-primary);
+  width: 15px;
+  height: 15px;
+}
+
+/* Sorteringsval */
+.filters__select {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--dark-primary);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-dark);
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Rensa-knapp */
+.filters__reset {
+  margin-top: 16px;
+  background: none;
+  border: 1px solid var(--border-dark);
+  border-radius: 999px;
+  padding: 8px 16px;
+  font-size: 13px;
+  color: var(--dark-tertiary);
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: var(--font-sans);
+}
+
+.filters__reset:hover {
+  border-color: var(--accent-coral);
+  color: var(--accent-coral);
+}
+
+/* Sälgrid */
+.seal-list-page__loading,
+.seal-list-page__empty {
+  font-size: 14px;
+  color: var(--dark-tertiary);
+}
+
+.seal-list-page__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
