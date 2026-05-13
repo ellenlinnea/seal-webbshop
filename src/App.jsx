@@ -5,6 +5,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import SealList from './pages/SealList'
+import SealDetail from './pages/SealDetail'
 
 function AppContent() {
   const { cartCount } = useCart()
@@ -18,7 +19,7 @@ function AppContent() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/salar" element={<SealList />} />
-        <Route path="/salar/:id" element={<div>Säl-detalj</div>} />
+        <Route path="/salar/:id" element={<SealDetail />} />
         <Route path="/varukorg" element={<div>Varukorg</div>} />
         <Route path="/kassa" element={<div>Kassa</div>} />
         <Route path="/bekraftelse" element={<div>Bekräftelse</div>} />
