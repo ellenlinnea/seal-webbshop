@@ -1,0 +1,183 @@
+.checkout {
+  padding: 48px 64px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.checkout__title {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 500;
+  font-style: italic;
+  margin-bottom: 40px;
+}
+
+.checkout__layout {
+  display: grid;
+  grid-template-columns: 1fr 360px;
+  gap: 48px;
+  align-items: start;
+}
+
+/* Formulär */
+.checkout__form {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.checkout__section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.checkout__section-title {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dark-tertiary);
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.checkout__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.checkout__field label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--dark-primary);
+}
+
+.checkout__field input {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--dark-primary);
+  background: var(--bg-card);
+  border: 1px solid var(--border-dark);
+  border-radius: 8px;
+  padding: 12px 14px;
+  transition: border-color 0.15s;
+  outline: none;
+}
+
+.checkout__field input:focus {
+  border-color: var(--dark-primary);
+}
+
+.checkout__field-row {
+  display: flex;
+  gap: 16px;
+}
+
+.checkout__payment-note {
+  font-size: 13px;
+  color: var(--dark-tertiary);
+  line-height: 1.5;
+}
+
+.checkout__error {
+  font-size: 13px;
+  color: var(--accent-coral);
+}
+
+.checkout__submit {
+  background: var(--dark-primary);
+  color: var(--bg-primary);
+  border: none;
+  border-radius: 999px;
+  padding: 16px 36px;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s;
+  align-self: flex-start;
+}
+
+.checkout__submit:hover:not(:disabled) {
+  background: var(--dark-secondary);
+}
+
+.checkout__submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+/* Ordersammanställning */
+.checkout__summary {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: sticky;
+  top: 96px;
+}
+
+.checkout__summary-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.checkout__summary-items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.checkout__summary-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.checkout__summary-img {
+  width: 56px;
+  height: 44px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.checkout__summary-name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.checkout__summary-meta {
+  font-size: 12px;
+  color: var(--dark-tertiary);
+}
+
+.checkout__summary-price {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.checkout__summary-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  padding-top: 16px;
+  border-top: 1px solid var(--border-light);
+}
+
+.checkout__summary-returns {
+  font-size: 12px;
+  color: var(--dark-tertiary);
+  text-align: center;
+}

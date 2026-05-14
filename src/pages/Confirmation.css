@@ -1,0 +1,163 @@
+.confirmation {
+  padding: 64px;
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.confirmation__loading {
+  padding: 64px;
+  color: var(--dark-tertiary);
+  font-size: 14px;
+}
+
+.confirmation__top {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.confirmation__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+}
+
+.confirmation__title {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.confirmation__title em {
+  font-style: italic;
+  color: var(--accent-primary);
+}
+
+.confirmation__sub {
+  font-size: 15px;
+  color: var(--dark-tertiary);
+  line-height: 1.7;
+}
+
+/* Sälarna i ordern */
+.confirmation__items {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border-light);
+}
+
+.confirmation__item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.confirmation__item-img {
+  width: 70px;
+  height: 56px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.confirmation__item-info {
+  flex: 1;
+}
+
+.confirmation__item-name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.confirmation__item-meta {
+  font-size: 13px;
+  color: var(--dark-tertiary);
+}
+
+.confirmation__item-price {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+/* Leverans och totalt */
+.confirmation__summary {
+  display: flex;
+  gap: 48px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 28px;
+}
+
+.confirmation__summary-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dark-tertiary);
+  margin-bottom: 8px;
+}
+
+.confirmation__address {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 14px;
+  color: var(--dark-primary);
+}
+
+.confirmation__total {
+  flex-shrink: 0;
+}
+
+.confirmation__total-amount {
+  font-family: var(--font-mono);
+  font-size: 24px;
+  font-weight: 500;
+}
+
+/* Knappar */
+.confirmation__actions {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.confirmation__home-btn {
+  display: inline-block;
+  background: var(--dark-primary);
+  color: var(--bg-primary);
+  text-decoration: none;
+  padding: 14px 32px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.confirmation__home-btn:hover {
+  background: var(--dark-secondary);
+}
+
+.confirmation__more-link {
+  font-size: 14px;
+  color: var(--accent-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.confirmation__more-link:hover {
+  text-decoration: underline;
+}

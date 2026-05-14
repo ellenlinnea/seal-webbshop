@@ -1,7 +1,7 @@
 {
   "seals": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Sture",
       "age": 7,
       "sex": "hane",
@@ -11,12 +11,16 @@
       "housetrained": true,
       "popularity": 98,
       "personality": "lugn, eftertänksam",
-      "traits": ["Älskar sill", "Ogillar måndagar", "Snarkar diskret"],
+      "traits": [
+        "Älskar sill",
+        "Ogillar måndagar",
+        "Snarkar diskret"
+      ],
       "bio": "Sture är en gentleman av den gamla skolan. Han uppskattar långa promenader på stranden och en god middag med sill och nubbe.",
       "image": "/sture.jpg"
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Anna-Karin",
       "age": 4,
       "sex": "hona",
@@ -26,12 +30,16 @@
       "housetrained": true,
       "popularity": 94,
       "personality": "social, busig",
-      "traits": ["Pratar för mycket", "Älskar Eurovision", "Sjunger i duschen"],
+      "traits": [
+        "Pratar för mycket",
+        "Älskar Eurovision",
+        "Sjunger i duschen"
+      ],
       "bio": "Anna-Karin är hela hamnens drottning. Charmig, högljudd och fullständigt oemotståndlig på fredagar.",
       "image": "/anna-karin.jpg"
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Stig",
       "age": 11,
       "sex": "hane",
@@ -41,12 +49,16 @@
       "housetrained": false,
       "popularity": 71,
       "personality": "envis, mysig",
-      "traits": ["Vägrar äta strömming", "Älskar P1", "Behöver morgonkaffe"],
+      "traits": [
+        "Vägrar äta strömming",
+        "Älskar P1",
+        "Behöver morgonkaffe"
+      ],
       "bio": "Stig vet vad han vill, och vad han inte vill. Mest av allt vill han ligga i skärgården och fundera.",
       "image": "/stig.jpg"
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Birgitta",
       "age": 6,
       "sex": "hona",
@@ -56,12 +68,16 @@
       "housetrained": true,
       "popularity": 89,
       "personality": "omtänksam, klok",
-      "traits": ["Bästa lyssnaren", "Ogillar oväsen", "Strikt med rutiner"],
+      "traits": [
+        "Bästa lyssnaren",
+        "Ogillar oväsen",
+        "Strikt med rutiner"
+      ],
       "bio": "Birgitta är som en favoritmoster: alltid där med ett varmt blickfång och ibland en sträng ton.",
       "image": "/birgitta.jpg"
     },
     {
-      "id": 5,
+      "id": "5",
       "name": "Bengt",
       "age": 3,
       "sex": "hane",
@@ -71,12 +87,16 @@
       "housetrained": false,
       "popularity": 82,
       "personality": "lekfull, energisk",
-      "traits": ["Sover sällan", "Älskar bollar", "Stjäl tofflor"],
+      "traits": [
+        "Sover sällan",
+        "Älskar bollar",
+        "Stjäl tofflor"
+      ],
       "bio": "Bengt är ung och full av spring. Han skulle behöva en familj som har tålamod och många bollar.",
       "image": "/bengt.jpg"
     },
     {
-      "id": 6,
+      "id": "6",
       "name": "Margareta",
       "age": 9,
       "sex": "hona",
@@ -86,12 +106,16 @@
       "housetrained": true,
       "popularity": 76,
       "personality": "värdig, försiktig",
-      "traits": ["Dricker bara kallt vatten", "Älskar opera", "Mjukvarm"],
+      "traits": [
+        "Dricker bara kallt vatten",
+        "Älskar opera",
+        "Mjukvarm"
+      ],
       "bio": "Margareta har sett mycket. Hon föredrar tystnad, klassisk musik och en god säng nära fönstret.",
       "image": "/margareta.jpg"
     },
     {
-      "id": 7,
+      "id": "7",
       "name": "Yngve",
       "age": 5,
       "sex": "hane",
@@ -101,12 +125,16 @@
       "housetrained": true,
       "popularity": 88,
       "personality": "stoisk, pålitlig",
-      "traits": ["Aldrig sen", "Punkt-säl", "Goda manér"],
+      "traits": [
+        "Aldrig sen",
+        "Punkt-säl",
+        "Goda manér"
+      ],
       "bio": "Yngve har de bästa manér i hela hamnen. Han hälsar artigt, äter prydligt och tackar alltid för maten.",
       "image": "/yngve.jpg"
     },
     {
-      "id": 8,
+      "id": "8",
       "name": "Solveig",
       "age": 8,
       "sex": "hona",
@@ -116,12 +144,16 @@
       "housetrained": true,
       "popularity": 79,
       "personality": "drömmande, mjuk",
-      "traits": ["Stjärnskådare", "Älskar regn", "Sjunger i sömnen"],
+      "traits": [
+        "Stjärnskådare",
+        "Älskar regn",
+        "Sjunger i sömnen"
+      ],
       "bio": "Solveig är hela kustens romantiker. Hon kan ligga i timmar och titta på molnen.",
       "image": "/solveig.jpg"
     },
     {
-      "id": 9,
+      "id": "9",
       "name": "Ragnar",
       "age": 2,
       "sex": "hane",
@@ -131,12 +163,16 @@
       "housetrained": false,
       "popularity": 65,
       "personality": "busig, nyfiken",
-      "traits": ["Klättrar på allt", "Öppnar lådor", "Aldrig nöjd"],
+      "traits": [
+        "Klättrar på allt",
+        "Öppnar lådor",
+        "Aldrig nöjd"
+      ],
       "bio": "Ragnar är pojken som måste se allt först. Energisk, lite stökig, helt charmig.",
       "image": "/ragnar.jpg"
     },
     {
-      "id": 10,
+      "id": "10",
       "name": "Gunhild",
       "age": 12,
       "sex": "hona",
@@ -146,12 +182,16 @@
       "housetrained": true,
       "popularity": 58,
       "personality": "tålmodig, varm",
-      "traits": ["Bakar i tankarna", "Älskar barnbarn", "Ger råd ofta"],
+      "traits": [
+        "Bakar i tankarna",
+        "Älskar barnbarn",
+        "Ger råd ofta"
+      ],
       "bio": "Gunhild är säl-mormor par excellence. Hon är klok, varm och har alltid en historia på lager.",
       "image": "/gunhild.jpg"
     },
     {
-      "id": 11,
+      "id": "11",
       "name": "Kjell-Åke",
       "age": 6,
       "sex": "hane",
@@ -161,12 +201,16 @@
       "housetrained": true,
       "popularity": 84,
       "personality": "jovialisk, högljudd",
-      "traits": ["Berättar samma vits", "Ledare i flocken", "Stor aptit"],
+      "traits": [
+        "Berättar samma vits",
+        "Ledare i flocken",
+        "Stor aptit"
+      ],
       "bio": "Kjell-Åke är hela kompisgängets centrum. Stor, glad, och alltid den sista som lämnar bryggan.",
       "image": "/kjell-åke.jpg"
     },
     {
-      "id": 12,
+      "id": "12",
       "name": "Gun-Britt",
       "age": 5,
       "sex": "hona",
@@ -176,11 +220,53 @@
       "housetrained": true,
       "popularity": 91,
       "personality": "praktisk, smart",
-      "traits": ["Räknar fiskar i sömnen", "Ordningsam", "Älskar listor"],
+      "traits": [
+        "Räknar fiskar i sömnen",
+        "Ordningsam",
+        "Älskar listor"
+      ],
       "bio": "Gun-Britt är säl-effektivitet personifierad. Hon vet alltid var allt är, och vad klockan är.",
       "image": "/gun-britt.jpg"
     }
   ],
-  "orders": [],
-  "users": []
+  "orders": [
+    {
+      "customer": {
+        "name": "Linnea Linnea",
+        "email": "linnea@mail.se",
+        "address": "Mingata 1",
+        "city": "Malmö",
+        "zip": "123 45",
+        "cardNumber": "1234 1234 1234 1234",
+        "cardExpiry": "0101",
+        "cardCvc": "123"
+      },
+      "items": [
+        {
+          "id": "7",
+          "name": "Yngve",
+          "age": 5,
+          "sex": "hane",
+          "size": "mellan",
+          "weight": "85 kg",
+          "price": 10800,
+          "housetrained": true,
+          "popularity": 88,
+          "personality": "stoisk, pålitlig",
+          "traits": [
+            "Aldrig sen",
+            "Punkt-säl",
+            "Goda manér"
+          ],
+          "bio": "Yngve har de bästa manér i hela hamnen. Han hälsar artigt, äter prydligt och tackar alltid för maten.",
+          "image": "/yngve.jpg"
+        }
+      ],
+      "total": 10800,
+      "date": "2026-05-13T19:00:50.536Z",
+      "id": "JZbIciqYMwE"
+    }
+  ],
+  "users": [],
+  "$schema": "./node_modules/json-server/schema.json"
 }

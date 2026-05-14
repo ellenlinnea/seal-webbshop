@@ -1,0 +1,250 @@
+.cart {
+  padding: 48px 64px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.cart__title {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 500;
+  font-style: italic;
+  margin-bottom: 40px;
+}
+
+/* Tom varukorg */
+.cart__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dark-tertiary);
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.cart__title--empty {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 500;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.cart__title--empty em {
+  font-style: italic;
+  color: var(--accent-primary);
+}
+
+.cart__empty-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.cart__empty-logo {
+  width: 80px;
+  height: 80px;
+  opacity: 0.5;
+}
+
+.cart__empty-text {
+  font-size: 15px;
+  color: var(--dark-tertiary);
+  text-align: center;
+  line-height: 1.6;
+}
+
+.cart__empty-btn {
+  display: inline-block;
+  background: var(--dark-primary);
+  color: var(--bg-primary);
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.cart__empty-btn:hover {
+  background: var(--dark-secondary);
+}
+
+/* Layout med items och summering */
+.cart__layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 48px;
+  align-items: start;
+}
+
+/* Sälkort i varukorgen */
+.cart__items {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.cart__item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.cart__item-img {
+  width: 90px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.cart__item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cart__item-name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.cart__item-meta {
+  font-size: 13px;
+  color: var(--dark-tertiary);
+}
+
+.cart__item-badge {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--accent-light);
+  color: var(--dark-secondary);
+  padding: 2px 8px;
+  border-radius: 999px;
+  align-self: flex-start;
+}
+
+.cart__item-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.cart__item-price {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.cart__item-remove {
+  background: none;
+  border: none;
+  font-size: 12px;
+  color: var(--dark-tertiary);
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.cart__item-remove:hover {
+  color: var(--accent-coral);
+}
+
+/* Summerings-ruta */
+.cart__summary {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: sticky;
+  top: 96px;
+}
+
+.cart__summary-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.cart__summary-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cart__summary-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: var(--dark-tertiary);
+}
+
+.cart__summary-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: var(--font-mono);
+  padding-top: 16px;
+  border-top: 1px solid var(--border-light);
+}
+
+.cart__checkout-btn {
+  display: block;
+  text-align: center;
+  background: var(--dark-primary);
+  color: var(--bg-primary);
+  text-decoration: none;
+  padding: 14px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.cart__checkout-btn:hover {
+  background: var(--dark-secondary);
+}
+
+.cart__returns {
+  font-size: 12px;
+  color: var(--dark-tertiary);
+  text-align: center;
+}
+
+.cart__clear {
+  background: none;
+  border: none;
+  font-size: 12px;
+  color: var(--dark-tertiary);
+  cursor: pointer;
+  text-decoration: underline;
+  text-align: center;
+  padding: 0;
+}
+
+.cart__clear:hover {
+  color: var(--accent-coral);
+}

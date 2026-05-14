@@ -6,6 +6,9 @@ import Footer from './components/Footer'
 import Home from './pages/Home'
 import SealList from './pages/SealList'
 import SealDetail from './pages/SealDetail'
+import Cart from './pages/Cart'
+import Checkout from './pages/Checkout'
+import Confirmation from './pages/Confirmation'
 
 function AppContent() {
   const { cartCount } = useCart()
@@ -20,9 +23,9 @@ function AppContent() {
         <Route path="/" element={<Home />} />
         <Route path="/salar" element={<SealList />} />
         <Route path="/salar/:id" element={<SealDetail />} />
-        <Route path="/varukorg" element={<div>Varukorg</div>} />
-        <Route path="/kassa" element={<div>Kassa</div>} />
-        <Route path="/bekraftelse" element={<div>Bekräftelse</div>} />
+        <Route path="/varukorg" element={<Cart />} />
+        <Route path="/kassa" element={<Checkout />} />
+        <Route path="/bekraftelse/:id" element={<Confirmation />} />
         <Route path="/favoriter" element={<div>Favoriter</div>} />
         <Route path="/login" element={<div>Logga in</div>} />
         <Route path="*" element={<div>404</div>} />
