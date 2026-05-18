@@ -1,0 +1,141 @@
+.login {
+  min-height: calc(100vh - 160px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+}
+
+.login__card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 20px;
+  padding: 48px;
+  width: 100%;
+  max-width: 420px;
+}
+
+.login__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  margin-bottom: 10px;
+}
+
+.login__title {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 28px;
+  line-height: 1.2;
+}
+
+.login__title em {
+  font-style: italic;
+  color: var(--accent-primary);
+}
+
+/* Flikar för att växla mellan lägen */
+.login__tabs {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--border-light);
+  border-radius: 999px;
+  padding: 4px;
+  margin-bottom: 28px;
+  background: var(--bg-secondary);
+}
+
+.login__tab {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 9px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--dark-tertiary);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.login__tab--active {
+  background: var(--dark-primary);
+  color: var(--bg-primary);
+}
+
+/* Formulär */
+.login__form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.login__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.login__label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--dark-secondary);
+}
+
+.login__input {
+  padding: 11px 14px;
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: var(--font-sans);
+  background: var(--bg-primary);
+  color: var(--dark-primary);
+  transition: border-color 0.15s;
+}
+
+.login__input:focus {
+  outline: none;
+  border-color: var(--accent-primary);
+}
+
+.login__input::placeholder {
+  color: var(--dark-tertiary);
+  opacity: 0.6;
+}
+
+/* Felmeddelande */
+.login__error {
+  font-size: 13px;
+  color: var(--accent-coral);
+  background: rgba(216, 138, 110, 0.1);
+  border: 1px solid rgba(216, 138, 110, 0.3);
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+/* Skicka-knapp */
+.login__submit {
+  margin-top: 4px;
+  background: var(--dark-primary);
+  color: var(--bg-primary);
+  border: none;
+  border-radius: 999px;
+  padding: 14px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.login__submit:hover:not(:disabled) {
+  background: var(--dark-secondary);
+}
+
+.login__submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

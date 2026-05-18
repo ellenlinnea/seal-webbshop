@@ -1,0 +1,133 @@
+.favs {
+  padding: 48px 64px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.favs__title {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 500;
+  font-style: italic;
+  margin-bottom: 8px;
+}
+
+.favs__count {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: var(--dark-tertiary);
+  text-transform: uppercase;
+  margin-bottom: 40px;
+}
+
+/* Tom favoritsida */
+.favs__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--dark-tertiary);
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.favs__title--empty {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 500;
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.favs__title--empty em {
+  font-style: italic;
+  color: var(--accent-primary);
+}
+
+.favs__empty-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 16px;
+  padding: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.favs__empty-logo {
+  width: 80px;
+  height: 80px;
+  opacity: 0.5;
+}
+
+.favs__empty-text {
+  font-size: 15px;
+  color: var(--dark-tertiary);
+  text-align: center;
+  line-height: 1.6;
+}
+
+.favs__empty-btn {
+  display: inline-block;
+  background: var(--dark-primary);
+  color: var(--bg-primary);
+  text-decoration: none;
+  padding: 12px 28px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.favs__empty-btn:hover {
+  background: var(--dark-secondary);
+}
+
+/* Säl-grid - samma kolumner som på säl-listan */
+.favs__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+/* Sidfot med länk-knappar */
+.favs__footer {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border-light);
+}
+
+.favs__more-link {
+  font-size: 14px;
+  color: var(--dark-tertiary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s;
+}
+
+.favs__more-link:hover {
+  color: var(--dark-primary);
+}
+
+.favs__cart-btn {
+  display: inline-block;
+  background: var(--dark-primary);
+  color: var(--bg-primary);
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.favs__cart-btn:hover {
+  background: var(--dark-secondary);
+}

@@ -1,5 +1,8 @@
 import { createContext, useContext, useState } from 'react'
 
+//Context för att ha en plats att hantera favoritlistans data, funktioner och synka med LocalStorage.
+// Kan då återanvända på flera pages
+
 // Skapar själva context-objektet som håller favoritlistan
 const FavsContext = createContext()
 

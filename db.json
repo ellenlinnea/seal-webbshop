@@ -232,8 +232,8 @@
   "orders": [
     {
       "customer": {
-        "name": "Linnea Linnea",
-        "email": "linnea@mail.se",
+        "name": "Test Test",
+        "email": "test@mail.se",
         "address": "Mingata 1",
         "city": "Malmö",
         "zip": "123 45",
@@ -267,6 +267,13 @@
       "id": "JZbIciqYMwE"
     }
   ],
-  "users": [],
+  "users": [
+    {
+      "id": "1",
+      "name": "Test Test",
+      "email": "test@mail.se",
+      "password": "test123"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }
