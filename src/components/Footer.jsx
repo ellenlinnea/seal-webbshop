@@ -21,20 +21,20 @@ function Footer() {
           <Link to="/salar">Alla sälar</Link>
           <Link to="/salar?housetrained=true">Rumsrena sälar</Link>
           <Link to="/salar?size=liten">Småsälar</Link>
-          <Link to="/salar?size=stor">Senior-sälar</Link>
+          <Link to="/salar?size=stor">Stora sälar</Link>
         </div>
 
         <div className="footer__col">
           <p className="footer__col-title">Service</p>
-          <Link to="/om-oss">Sälvård</Link>
-          <Link to="/om-oss">Frakt & hemleverans</Link>
-          <Link to="/om-oss">Returer</Link>
+          <Link to="/salvard">Sälvård</Link>
+          <Link to="/frakt">Frakt & hemleverans</Link>
+          <Link to="/returer">Returer</Link>
         </div>
 
         <div className="footer__col">
           <p className="footer__col-title">Företaget</p>
           <Link to="/om-oss">Om oss</Link>
-          <Link to="/om-oss">Kontakt</Link>
+          <Link to="/kontakt">Kontakt</Link>
         </div>
       </div>
 

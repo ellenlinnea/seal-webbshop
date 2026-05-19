@@ -1,4 +1,5 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import SealCard from '../components/SealCard'
 import { useSeals } from '../hooks/useSeals'
 import { useCart } from '../context/CartContext'
@@ -10,11 +11,22 @@ function SealList() {
   const { addToCart } = useCart()
   const { toggleFav, isFav } = useFavs()
 
-  // Håller koll på vad användaren valt i filtren
-  const [filterSize, setFilterSize] = useState('')
-  const [filterGender, setFilterGender] = useState('')
-  const [filterHousetrained, setFilterHousetrained] = useState(false)
+  // Läser URL-parametrar så att footer-länkarna kan förväljas filter
+  // t.ex. /salar?size=liten sätter storleksfiltret direkt
+  const [searchParams] = useSearchParams()
+
+  // Startvärdet hämtas från URL:en om det finns, annars tom/false
+  const [filterSize, setFilterSize] = useState(() => searchParams.get('size') || '')
+  const [filterGender, setFilterGender] = useState(() => searchParams.get('gender') || '')
+  const [filterHousetrained, setFilterHousetrained] = useState(() => searchParams.get('housetrained') === 'true')
   const [sortBy, setSortBy] = useState('popularity')
+
+  // Uppdaterar filtren när URL-parametrarna ändras - t.ex. när man klickar en footer-länk
+  useEffect(() => {
+    setFilterSize(searchParams.get('size') || '')
+    setFilterGender(searchParams.get('gender') || '')
+    setFilterHousetrained(searchParams.get('housetrained') === 'true')
+  }, [searchParams])
 
   // Filtrerar och sorterar
   // Körs bara om när seals eller något filter ändras

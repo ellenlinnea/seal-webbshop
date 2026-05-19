@@ -12,6 +12,12 @@ import Checkout from './pages/Checkout'
 import Confirmation from './pages/Confirmation'
 import Favs from './pages/Favs'
 import Login from './pages/Login'
+import NotFound from './pages/NotFound'
+import About from './pages/About'
+import Contact from './pages/Contact'
+import SealCare from './pages/SealCare'
+import Shipping from './pages/Shipping'
+import Returns from './pages/Returns'
 
 function AppContent() {
   const { cartCount } = useCart()
@@ -32,7 +38,12 @@ function AppContent() {
         <Route path="/bekraftelse/:id" element={<Confirmation />} />
         <Route path="/favoriter" element={<Favs />} />
         <Route path="/login" element={<Login />} />
-        <Route path="*" element={<div>404</div>} />
+        <Route path="/om-oss" element={<About />} />
+        <Route path="/kontakt" element={<Contact />} />
+        <Route path="/salvard" element={<SealCare />} />
+        <Route path="/frakt" element={<Shipping />} />
+        <Route path="/returer" element={<Returns />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
       {/* Footer ligger också utanför så den visas på alla sidor */}
