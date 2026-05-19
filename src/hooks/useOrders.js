@@ -1,3 +1,5 @@
+import { useState, useEffect } from 'react'
+
 const API = 'http://localhost:3001'
 
 // Skickar en ny order till databasen
@@ -30,12 +32,32 @@ export async function getOrder(id) {
   return res.json()
 }
 
-// Hämtar alla ordrar för en specifik användare baserat på e-post
-// Används sen på profilsidan för att visa orderhistorik
-export async function getOrdersByEmail(email) {
-  const res = await fetch(`${API}/orders?customer.email=${email}`)
+// Hämtar alla ordrar för den inloggade användaren, baserat på e-post
+// Fungerar precis som useSeals - returnerar orders, loading och error
+export function useOrdersByEmail(email) {
+  const [orders, setOrders] = useState([])
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState(null)
 
-  if (!res.ok) throw new Error('Kunde inte hämta ordrar')
+  useEffect(() => {
+    if (!email) return
 
-  return res.json()
+    fetch(`${API}/orders?customer.email=${email}`)
+      .then(res => {
+        if (!res.ok) throw new Error('Kunde inte hämta ordrar')
+        return res.json()
+      })
+      .then(data => {
+        // Lägger senaste ordern överst
+        const sorted = [...data].sort((a, b) => new Date(b.date) - new Date(a.date))
+        setOrders(sorted)
+        setLoading(false)
+      })
+      .catch(err => {
+        setError(err.message)
+        setLoading(false)
+      })
+  }, [email])
+
+  return { orders, loading, error }
 }

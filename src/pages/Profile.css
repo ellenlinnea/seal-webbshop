@@ -1,0 +1,206 @@
+.profile {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 48px 64px;
+}
+
+/* Profilhuvud */
+.profile__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding-bottom: 40px;
+  border-bottom: 1px solid var(--border-light);
+  margin-bottom: 48px;
+}
+
+.profile__eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent-primary);
+  margin-bottom: 10px;
+}
+
+.profile__title {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  line-height: 1.1;
+}
+
+.profile__title em {
+  font-style: italic;
+  color: var(--accent-primary);
+}
+
+.profile__email {
+  font-size: 14px;
+  color: var(--dark-tertiary);
+}
+
+.profile__logout {
+  background: none;
+  border: 1px solid var(--border-dark);
+  border-radius: 999px;
+  padding: 9px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  color: var(--dark-primary);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.profile__logout:hover {
+  background: var(--dark-primary);
+  color: var(--bg-primary);
+}
+
+/* Orderhistorik */
+.profile__section-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  font-style: italic;
+  margin-bottom: 24px;
+}
+
+.profile__loading,
+.profile__error {
+  font-size: 14px;
+  color: var(--dark-tertiary);
+}
+
+.profile__error {
+  color: var(--accent-coral);
+}
+
+/* Tom orderhistorik */
+.profile__empty {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+  padding: 40px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  font-size: 15px;
+  color: var(--dark-tertiary);
+}
+
+.profile__empty-btn {
+  display: inline-block;
+  background: var(--dark-primary);
+  color: var(--bg-primary);
+  text-decoration: none;
+  padding: 11px 24px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.profile__empty-btn:hover {
+  background: var(--dark-secondary);
+}
+
+/* Orderkort */
+.profile__order {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.profile__order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.profile__order-id {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--dark-tertiary);
+  margin-bottom: 4px;
+}
+
+.profile__order-date {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--dark-primary);
+}
+
+.profile__order-total {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--dark-primary);
+}
+
+/* Sälar i ordern */
+.profile__order-items {
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.profile__order-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.profile__order-img {
+  width: 60px;
+  height: 46px;
+  object-fit: cover;
+  border-radius: 8px;
+  flex-shrink: 0;
+}
+
+.profile__order-name {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.profile__order-meta {
+  font-size: 12px;
+  color: var(--dark-tertiary);
+  margin-top: 2px;
+}
+
+.profile__order-price {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  margin-left: auto;
+  flex-shrink: 0;
+  color: var(--dark-secondary);
+}
+
+/* Leveransadress */
+.profile__order-address {
+  display: flex;
+  gap: 12px;
+  padding: 14px 24px;
+  border-top: 1px solid var(--border-light);
+  font-size: 13px;
+  background: var(--bg-secondary);
+}
+
+.profile__order-address-label {
+  color: var(--dark-tertiary);
+  flex-shrink: 0;
+}

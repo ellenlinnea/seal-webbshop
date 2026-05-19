@@ -1,14 +1,16 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useCart } from '../context/CartContext'
+import { useAuth } from '../context/AuthContext'
 import { createOrder } from '../hooks/useOrders'
 import './Checkout.css'
 
 function Checkout() {
   const { cart, clearCart } = useCart()
+  const { user, login, register } = useAuth()
   const navigate = useNavigate()
 
-  // lagra inmatningar i formuläret
+  // Formulärfälten för kunduppgifter och betalning
   const [form, setForm] = useState({
     name: '',
     email: '',
@@ -23,32 +25,55 @@ function Checkout() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
 
-  // Räknar ut totalpriset
+  // Förifylller namn och e-post om användaren är inloggad
+  useEffect(() => {
+    if (user) {
+      setForm(prev => ({ ...prev, name: user.name, email: user.email }))
+    }
+  }, [user])
+
+  // Login-rutan i kassan - håller koll på om den är öppen och vilket läge den är i
+  const [authMode, setAuthMode] = useState(null) // null = stängd, 'login' eller 'register'
+  const [authName, setAuthName] = useState('')
+  const [authEmail, setAuthEmail] = useState('')
+  const [authPassword, setAuthPassword] = useState('')
+  const [authError, setAuthError] = useState('')
+  const [authLoading, setAuthLoading] = useState(false)
+
+  // Hanterar inloggning eller registrering direkt i kassan utan att lämna sidan
+  async function handleAuthSubmit(e) {
+    e.preventDefault()
+    setAuthError('')
+    setAuthLoading(true)
+
+    try {
+      if (authMode === 'login') {
+        await login(authEmail, authPassword)
+      } else {
+        await register(authName, authEmail, authPassword)
+      }
+      // Stänger login-rutan - namn och e-post fylls i automatiskt via useEffect ovan
+      setAuthMode(null)
+    } catch (err) {
+      setAuthError(err.message)
+    } finally {
+      setAuthLoading(false)
+    }
+  }
+
   const total = cart.reduce((sum, item) => sum + item.price, 0)
 
-  // Uppdaterar formuläret när användare skriver
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value })
   }
 
-  // Skickar ordern till databasen när formuläret skickas
   async function handleSubmit(e) {
     e.preventDefault()
     setLoading(true)
     setError(null)
 
-    const order = {
-      customer: form,
-      items: cart,
-      total,
-      date: new Date().toISOString()
-    }
-
     try {
-      //använder hook för API-anrop
       const savedOrder = await createOrder(cart, form, total)
-
-      // Tömmer varukorgen och skickar vidare till bekräftelsesidan med order-id
       clearCart()
       navigate(`/bekraftelse/${savedOrder.id}`)
     } catch (err) {
@@ -62,35 +87,67 @@ function Checkout() {
       <h1 className="checkout__title">Kassa</h1>
 
       <div className="checkout__layout">
-        {/* Formulär med kunduppgifter */}
         <form className="checkout__form" onSubmit={handleSubmit}>
+
+          {/* Visar antingen "inloggad som"-raden eller login-rutan beroende på om man är inloggad */}
+          {user ? (
+            // Inloggad: visar namn och att fälten är förifyllda
+            <div className="checkout__auth-bar">
+              <span>Inloggad som <strong>{user.name}</strong></span>
+              <span className="checkout__auth-bar-note">Namn och e-post är förifyllda</span>
+            </div>
+          ) : (
+            // Inte inloggad: visar valfri login-ruta, kan ignoreras och handla ändå
+            <div className="checkout__auth-box">
+              <p className="checkout__auth-title">Vill du spara din order?</p>
+              <p className="checkout__auth-sub">Logga in eller skapa ett konto — eller fortsätt som vanligt utan konto.</p>
+
+              {/* Knapparna visas när login-rutan är stängd */}
+              {authMode === null && (
+                <div className="checkout__auth-btns">
+                  <button type="button" className="checkout__auth-btn" onClick={() => setAuthMode('login')}>Logga in</button>
+                  <button type="button" className="checkout__auth-btn" onClick={() => setAuthMode('register')}>Skapa konto</button>
+                </div>
+              )}
+
+              {/* Formuläret visas när man klickat logga in eller skapa konto */}
+              {authMode !== null && (
+                <div className="checkout__auth-form">
+                  <div className="checkout__auth-tabs">
+                    <button type="button" className={`checkout__auth-tab ${authMode === 'login' ? 'checkout__auth-tab--active' : ''}`} onClick={() => { setAuthMode('login'); setAuthError('') }}>Logga in</button>
+                    <button type="button" className={`checkout__auth-tab ${authMode === 'register' ? 'checkout__auth-tab--active' : ''}`} onClick={() => { setAuthMode('register'); setAuthError('') }}>Skapa konto</button>
+                  </div>
+
+                  {authMode === 'register' && (
+                    <input className="checkout__auth-input" type="text" placeholder="Namn" value={authName} onChange={e => setAuthName(e.target.value)} required />
+                  )}
+                  <input className="checkout__auth-input" type="email" placeholder="E-postadress" value={authEmail} onChange={e => setAuthEmail(e.target.value)} required />
+                  <input className="checkout__auth-input" type="password" placeholder="Lösenord" value={authPassword} onChange={e => setAuthPassword(e.target.value)} required />
+
+                  {authError && <p className="checkout__auth-error">{authError}</p>}
+
+                  <div className="checkout__auth-actions">
+                    <button type="button" className="checkout__auth-submit" onClick={handleAuthSubmit} disabled={authLoading}>
+                      {authLoading ? 'Ett ögonblick...' : authMode === 'login' ? 'Logga in' : 'Skapa konto'}
+                    </button>
+                    <button type="button" className="checkout__auth-skip" onClick={() => setAuthMode(null)}>Avbryt</button>
+                  </div>
+                </div>
+              )}
+            </div>
+          )}
+
           <div className="checkout__section">
             <h2 className="checkout__section-title">Dina uppgifter</h2>
 
             <div className="checkout__field">
               <label htmlFor="name">Namn</label>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                value={form.name}
-                onChange={handleChange}
-                placeholder="Förnamn Efternamn"
-                required
-              />
+              <input id="name" name="name" type="text" value={form.name} onChange={handleChange} placeholder="Förnamn Efternamn" required />
             </div>
 
             <div className="checkout__field">
               <label htmlFor="email">E-post</label>
-              <input
-                id="email"
-                name="email"
-                type="email"
-                value={form.email}
-                onChange={handleChange}
-                placeholder="din@epost.se"
-                required
-              />
+              <input id="email" name="email" type="email" value={form.email} onChange={handleChange} placeholder="din@epost.se" required />
             </div>
           </div>
 
@@ -99,44 +156,20 @@ function Checkout() {
 
             <div className="checkout__field">
               <label htmlFor="address">Gatuadress</label>
-              <input
-                id="address"
-                name="address"
-                type="text"
-                value={form.address}
-                onChange={handleChange}
-                placeholder="Storgatan 1"
-                required
-              />
+              <input id="address" name="address" type="text" value={form.address} onChange={handleChange} placeholder="Storgatan 1" required />
             </div>
 
             <div className="checkout__field-row">
               <div className="checkout__field">
                 <label htmlFor="zip">Postnummer</label>
-                <input
-                  id="zip"
-                  name="zip"
-                  type="text"
-                  value={form.zip}
-                  onChange={handleChange}
-                  placeholder="123 45"
-                  required
-                />
+                <input id="zip" name="zip" type="text" value={form.zip} onChange={handleChange} placeholder="123 45" required />
               </div>
               <div className="checkout__field">
                 <label htmlFor="city">Ort</label>
-                <input
-                  id="city"
-                  name="city"
-                  type="text"
-                  value={form.city}
-                  onChange={handleChange}
-                  placeholder="Stockholm"
-                  required
-                />
+                <input id="city" name="city" type="text" value={form.city} onChange={handleChange} placeholder="Stockholm" required />
               </div>
             </div>
-            <p className="checkout__payment-note">Vi levererar hem till dig! Sälen levereras inpackad i våtdräkt och tillsammans med fisk för två dagar.</p>
+            <p className="checkout__payment-note">Vi levererar hem till dig! Sälen levereras inpackad i våtdräkt och med fisk för två dagar.</p>
           </div>
 
           <div className="checkout__section">
@@ -144,44 +177,17 @@ function Checkout() {
 
             <div className="checkout__field">
               <label htmlFor="cardNumber">Kortnummer</label>
-              <input
-                id="cardNumber"
-                name="cardNumber"
-                type="text"
-                value={form.cardNumber}
-                onChange={handleChange}
-                placeholder="1234 5678 9012 3456"
-                maxLength={19}
-                required
-              />
+              <input id="cardNumber" name="cardNumber" type="text" value={form.cardNumber} onChange={handleChange} placeholder="1234 5678 9012 3456" maxLength={19} required />
             </div>
 
             <div className="checkout__field-row">
               <div className="checkout__field">
                 <label htmlFor="cardExpiry">Utgår MM/ÅÅ</label>
-                <input
-                  id="cardExpiry"
-                  name="cardExpiry"
-                  type="text"
-                  value={form.cardExpiry}
-                  onChange={handleChange}
-                  placeholder="MM/ÅÅ"
-                  maxLength={5}
-                  required
-                />
+                <input id="cardExpiry" name="cardExpiry" type="text" value={form.cardExpiry} onChange={handleChange} placeholder="MM/ÅÅ" maxLength={5} required />
               </div>
               <div className="checkout__field">
                 <label htmlFor="cardCvc">CVC</label>
-                <input
-                  id="cardCvc"
-                  name="cardCvc"
-                  type="text"
-                  value={form.cardCvc}
-                  onChange={handleChange}
-                  placeholder="123"
-                  maxLength={3}
-                  required
-                />
+                <input id="cardCvc" name="cardCvc" type="text" value={form.cardCvc} onChange={handleChange} placeholder="123" maxLength={3} required />
               </div>
             </div>
           </div>

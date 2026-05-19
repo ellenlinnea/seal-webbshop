@@ -38,7 +38,7 @@ function Header({ cartCount = 0, favCount = 0, user = null, onLogout }) {
         {/* Visar antingen inloggad användares namn + logga ut, eller en länk till login */}
         {user ? (
           <div className="header__user">
-            <span className="header__user-name">Hej, {user.name.split(' ')[0]}</span>
+            <NavLink to="/profil" className="header__user-name">Hej, {user.name.split(' ')[0]}</NavLink>
             <button className="header__logout-btn" onClick={onLogout}>Logga ut</button>
           </div>
         ) : (

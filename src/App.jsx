@@ -12,6 +12,8 @@ import Checkout from './pages/Checkout'
 import Confirmation from './pages/Confirmation'
 import Favs from './pages/Favs'
 import Login from './pages/Login'
+import Profile from './pages/Profile'
+import ProtectedRoute from './components/ProtectedRoute'
 import NotFound from './pages/NotFound'
 import About from './pages/About'
 import Contact from './pages/Contact'
@@ -38,6 +40,7 @@ function AppContent() {
         <Route path="/bekraftelse/:id" element={<Confirmation />} />
         <Route path="/favoriter" element={<Favs />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/profil" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
         <Route path="/om-oss" element={<About />} />
         <Route path="/kontakt" element={<Contact />} />
         <Route path="/salvard" element={<SealCare />} />

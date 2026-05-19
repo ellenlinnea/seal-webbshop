@@ -19,6 +19,165 @@
   align-items: start;
 }
 
+/* Auth-sektion i kassan */
+.checkout__auth-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--accent-light);
+  border-radius: 10px;
+  padding: 12px 16px;
+  font-size: 14px;
+  color: var(--dark-secondary);
+}
+
+.checkout__auth-bar-note {
+  font-size: 12px;
+  color: var(--dark-tertiary);
+}
+
+.checkout__auth-box {
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.checkout__auth-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--dark-primary);
+}
+
+.checkout__auth-sub {
+  font-size: 13px;
+  color: var(--dark-tertiary);
+  line-height: 1.5;
+}
+
+.checkout__auth-btns {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.checkout__auth-btn {
+  background: none;
+  border: 1px solid var(--border-dark);
+  border-radius: 999px;
+  padding: 8px 20px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  color: var(--dark-primary);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.checkout__auth-btn:hover {
+  background: var(--dark-primary);
+  color: var(--bg-primary);
+}
+
+/* Inline-formulär */
+.checkout__auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.checkout__auth-tabs {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--border-light);
+  border-radius: 999px;
+  padding: 3px;
+  background: var(--bg-secondary);
+  align-self: flex-start;
+}
+
+.checkout__auth-tab {
+  background: none;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  color: var(--dark-tertiary);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.checkout__auth-tab--active {
+  background: var(--dark-primary);
+  color: var(--bg-primary);
+}
+
+.checkout__auth-input {
+  padding: 10px 14px;
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  font-size: 13px;
+  font-family: var(--font-sans);
+  background: var(--bg-primary);
+  color: var(--dark-primary);
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.checkout__auth-input:focus {
+  border-color: var(--accent-primary);
+}
+
+.checkout__auth-error {
+  font-size: 12px;
+  color: var(--accent-coral);
+}
+
+.checkout__auth-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.checkout__auth-submit {
+  background: var(--dark-primary);
+  color: var(--bg-primary);
+  border: none;
+  border-radius: 999px;
+  padding: 9px 22px;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.checkout__auth-submit:hover:not(:disabled) {
+  background: var(--dark-secondary);
+}
+
+.checkout__auth-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.checkout__auth-skip {
+  background: none;
+  border: none;
+  font-size: 12px;
+  color: var(--dark-tertiary);
+  cursor: pointer;
+  text-decoration: underline;
+  font-family: var(--font-sans);
+  padding: 0;
+}
+
 /* Formulär */
 .checkout__form {
   display: flex;
