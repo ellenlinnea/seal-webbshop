@@ -194,3 +194,35 @@
   color: var(--dark-secondary);
   cursor: default;
 }
+
+@media (max-width: 768px) {
+  .seal-detail {
+    padding: 24px 16px;
+  }
+
+  /* Bild ovanför, info nedanför */
+  .seal-detail__layout {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  /* Bilden ska inte vara sticky på mobil */
+  .seal-detail__img-wrap {
+    position: static;
+  }
+
+  .seal-detail__name {
+    font-size: 36px;
+  }
+
+  /* Pris och knapp bredvid varandra, knappen tar resten av bredden */
+  .seal-detail__footer {
+    flex-wrap: wrap;
+  }
+
+  .seal-detail__btn {
+    flex: 1;
+    text-align: center;
+    min-height: 44px;
+  }
+}

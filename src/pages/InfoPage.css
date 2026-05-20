@@ -164,3 +164,20 @@
   opacity: 0.25;
   margin-bottom: 32px;
 }
+
+@media (max-width: 768px) {
+  .info {
+    padding: 40px 24px;
+  }
+
+  .info__title {
+    font-size: 32px;
+  }
+
+  .info__cta {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

@@ -139,3 +139,18 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+@media (max-width: 768px) {
+  .login {
+    padding: 24px 16px;
+    align-items: flex-start;
+  }
+
+  .login__card {
+    padding: 32px 24px;
+  }
+
+  .login__submit {
+    min-height: 44px;
+  }
+}

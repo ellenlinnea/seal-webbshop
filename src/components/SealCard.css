@@ -155,3 +155,17 @@
 .seal-card__btn:hover {
   background: var(--dark-secondary);
 }
+
+@media (max-width: 768px) {
+  /* Hjärtknappen får 44x44px klickyta på mobil */
+  .seal-card__fav {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Köp-knappen får större klickyta */
+  .seal-card__btn {
+    min-height: 44px;
+    padding: 8px 16px;
+  }
+}

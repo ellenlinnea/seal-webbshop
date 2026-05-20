@@ -161,3 +161,36 @@
 .confirmation__more-link:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 768px) {
+  .confirmation {
+    padding: 24px 16px;
+    gap: 32px;
+  }
+
+  .confirmation__title {
+    font-size: 36px;
+  }
+
+  /* Leverans och totalt staplas på varandra */
+  .confirmation__summary {
+    flex-direction: column;
+    gap: 24px;
+    padding: 20px;
+  }
+
+  /* Knappar staplas och tar full bredd */
+  .confirmation__actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .confirmation__home-btn {
+    text-align: center;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

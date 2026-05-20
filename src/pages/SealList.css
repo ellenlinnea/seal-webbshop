@@ -159,3 +159,71 @@
   grid-template-columns: repeat(3, 1fr);
   gap: 24px;
 }
+
+/* Knappen som öppnar filtret - bara synlig på mobil */
+.filters__toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .seal-list-page {
+    padding: 24px 16px;
+  }
+
+  .seal-list-page__layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  /* Filterknappen visas på mobil */
+  .filters__toggle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    min-height: 44px;
+    padding: 0 16px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    color: var(--dark-primary);
+    cursor: pointer;
+  }
+
+  /* Om filter är aktiva får knappen en tydligare kant */
+  .filters__toggle--active {
+    border-color: var(--dark-primary);
+  }
+
+  /* Filterpanelen är gömd på mobil som standard */
+  .filters {
+    display: none;
+    position: static;
+    padding: 20px;
+  }
+
+  /* Visas när filterOpen är true */
+  .filters--open {
+    display: flex;
+  }
+
+  /* Två kolumner på mobil */
+  .seal-list-page__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  /* Filterknapparna och rensa-knappen får större klickyta */
+  .filters__chip {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .filters__reset {
+    min-height: 44px;
+  }
+}

@@ -72,16 +72,36 @@
   color: var(--accent-light);
   opacity: 0.6;
   margin-bottom: 4px;
+  /* Knapp-reset så den ser ut som vanlig text */
+  background: none;
+  border: none;
+  cursor: default;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
-.footer__col a {
+/* Plus/minus-ikonen är gömd på desktop */
+.footer__col-icon {
+  display: none;
+}
+
+.footer__col-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer__col-links a {
   text-decoration: none;
   font-size: 14px;
   color: rgba(234, 241, 242, 0.8);
   transition: color 0.15s;
 }
 
-.footer__col a:hover {
+.footer__col-links a:hover {
   color: var(--bg-primary);
 }
 
@@ -96,4 +116,63 @@
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgba(234, 241, 242, 0.4);
+}
+
+@media (max-width: 768px) {
+  .footer__top {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 32px 24px;
+  }
+
+  .footer__brand {
+    margin-bottom: 24px;
+  }
+
+  /* Varje kolumn får en linje mellan sig */
+  .footer__col {
+    border-top: 1px solid rgba(234, 241, 242, 0.1);
+    padding: 16px 0;
+    gap: 0;
+  }
+
+  /* Rubriken blir klickbar och får 44px klickyta */
+  .footer__col-title {
+    cursor: pointer;
+    opacity: 0.8;
+    min-height: 44px;
+    margin-bottom: 0;
+  }
+
+  /* Plus/minus-ikonen visas på mobil */
+  .footer__col-icon {
+    display: block;
+    font-size: 18px;
+    opacity: 0.6;
+  }
+
+  /* Länkarna är gömda som standard på mobil */
+  .footer__col-links {
+    display: none;
+    padding-top: 12px;
+    gap: 16px;
+  }
+
+  /* Visas när sektionen är öppen */
+  .footer__col-links--open {
+    display: flex;
+  }
+
+  .footer__col-links a {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+    padding: 20px 24px;
+  }
 }

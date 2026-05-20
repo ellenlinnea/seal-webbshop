@@ -248,3 +248,34 @@
 .cart__clear:hover {
   color: var(--accent-coral);
 }
+
+@media (max-width: 768px) {
+  .cart {
+    padding: 24px 16px;
+  }
+
+  /* Summering hamnar under listan istället för bredvid */
+  .cart__layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .cart__summary {
+    position: static;
+  }
+
+  /* Ta bort-knappen får större klickyta */
+  .cart__item-remove {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+
+  .cart__empty-btn,
+  .cart__checkout-btn {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

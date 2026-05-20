@@ -131,3 +131,28 @@
 .favs__cart-btn:hover {
   background: var(--dark-secondary);
 }
+
+@media (max-width: 768px) {
+  .favs {
+    padding: 24px 16px;
+  }
+
+  .favs__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .favs__footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .favs__cart-btn,
+  .favs__empty-btn {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

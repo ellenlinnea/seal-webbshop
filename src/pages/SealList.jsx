@@ -45,7 +45,10 @@ function SealList() {
     return result
   }, [seals, filterSize, filterGender, filterHousetrained, sortBy])
 
-  // Nollställer all filtrering och sortering...
+  // Håller koll på om filterpanelen är öppen på mobil
+  const [filterOpen, setFilterOpen] = useState(false)
+
+  // Nollställer all filtrering och sortering
   function resetFilters() {
     setFilterSize('')
     setFilterGender('')
@@ -60,7 +63,16 @@ function SealList() {
     <div className="seal-list-page">
       <div className="seal-list-page__layout">
 
-        <aside className="filters">
+        {/* Knappen syns bara på mobil och öppnar/stänger filterpanelen */}
+        <button
+          className={`filters__toggle ${hasActiveFilters ? 'filters__toggle--active' : ''}`}
+          onClick={() => setFilterOpen(!filterOpen)}
+        >
+          {hasActiveFilters ? `Filter (${[filterSize, filterGender, filterHousetrained].filter(Boolean).length})` : 'Filter'}
+          <span>{filterOpen ? '↑' : '↓'}</span>
+        </button>
+
+        <aside className={`filters ${filterOpen ? 'filters--open' : ''}`}>
           <p className="filters__heading">Filter</p>
 
           {/* knappar för storlek - ska kunna klicka igen för att avmarkera */}

@@ -340,3 +340,30 @@
   color: var(--dark-tertiary);
   text-align: center;
 }
+
+@media (max-width: 768px) {
+  .checkout {
+    padding: 24px 16px;
+  }
+
+  /* Ordersammanställningen hamnar under formuläret */
+  .checkout__layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .checkout__summary {
+    position: static;
+  }
+
+  .checkout__submit {
+    width: 100%;
+    min-height: 44px;
+    text-align: center;
+  }
+
+  /* Postnummer och ort staplas på riktigt smala skärmar */
+  .checkout__field-row {
+    flex-direction: column;
+  }
+}
