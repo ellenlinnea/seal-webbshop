@@ -13,6 +13,9 @@ export function CartProvider({ children }) {
     return saved ? JSON.parse(saved) : []
   })
 
+  // Håller koll på vilken säl som senast lades till, så popupen vet vad den ska visa
+  const [addedSeal, setAddedSeal] = useState(null)
+
   // Hjälpfunktion som uppdaterar både state och localStorage samtidigt
   function saveCart(newCart) {
     setCart(newCart)
@@ -24,6 +27,12 @@ export function CartProvider({ children }) {
     const exists = cart.find(item => item.id === seal.id)
     if (exists) return
     saveCart([...cart, seal])
+    setAddedSeal(seal) // Visar popupen med denna säl
+  }
+
+  // Stänger popupen
+  function clearAddedSeal() {
+    setAddedSeal(null)
   }
 
   // Tar bort en säl från varukorgen baserat på id
@@ -41,7 +50,7 @@ export function CartProvider({ children }) {
 
   return (
     // Gör cart och alla funktioner tillgängliga för alla komponenter under Provider
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, cartCount }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, clearCart, cartCount, addedSeal, clearAddedSeal }}>
       {children}
     </CartContext.Provider>
   )

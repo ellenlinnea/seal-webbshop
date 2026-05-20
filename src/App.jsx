@@ -14,6 +14,7 @@ import Favs from './pages/Favs'
 import Login from './pages/Login'
 import Profile from './pages/Profile'
 import ProtectedRoute from './components/ProtectedRoute'
+import CartPopup from './components/CartPopup'
 import NotFound from './pages/NotFound'
 import About from './pages/About'
 import Contact from './pages/Contact'
@@ -50,6 +51,8 @@ function AppContent() {
       </Routes>
       <Footer />
       {/* Footer ligger också utanför så den visas på alla sidor */}
+      {/* Popup som visas när en säl läggs till i varukorgen */}
+      <CartPopup />
     </>
   )
 }
