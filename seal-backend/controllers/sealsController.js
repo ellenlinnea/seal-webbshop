@@ -1,6 +1,8 @@
 import Seal from '../models/Seal.js'
 
-// Hämtar alla sälar från databasen
+// @desc   Hämta alla sälar
+// @route  GET /api/seals
+// @access Public
 export async function getAllSeals(req, res) {
   try {
     const seals = await Seal.find()
@@ -10,7 +12,9 @@ export async function getAllSeals(req, res) {
   }
 }
 
-// Hämtar en enskild säl baserat på id i URL:en
+// @desc   Hämta en enskild säl
+// @route  GET /api/seals/:id
+// @access Public
 export async function getSealById(req, res) {
   try {
     const seal = await Seal.findById(req.params.id)
