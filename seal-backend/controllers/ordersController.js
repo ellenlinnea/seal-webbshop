@@ -25,6 +25,7 @@ export async function createOrder(req, res) {
       customer,
       items: seals.map(s => s._id),
       total,
+      // ?. betyder "om req.user finns, hämta userId - annars null" (gäst-köp har ingen inloggad användare)
       userId: req.user?.userId || null
     })
 
@@ -42,6 +43,7 @@ export async function createOrder(req, res) {
 // @access Public
 export async function getOrderById(req, res) {
   try {
+    // ordern sparar bara sälarnas id:n - populate('items') hämtar de riktiga sälobjekten så vi får namn, pris osv i svaret
     const order = await Order.findById(req.params.id).populate('items')
     if (!order) return res.status(404).json({ error: 'Ordern hittades inte' })
     res.json(order)
@@ -55,6 +57,8 @@ export async function getOrderById(req, res) {
 // @access Private
 export async function getMyOrders(req, res) {
   try {
+    // ordern sparar bara sälarnas id:n - populate('items') hämtar de riktiga sälobjekten så vi får namn, pris osv i svaret
+    // sort -1 = nyaste ordern först
     const orders = await Order.find({ userId: req.user.userId })
       .populate('items')
       .sort({ createdAt: -1 })
