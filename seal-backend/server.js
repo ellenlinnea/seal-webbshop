@@ -4,6 +4,7 @@ import dotenv from 'dotenv'
 import connectDB from './config/dbConnection.js'
 import sealsRouter from './routes/seals.js'
 import authRouter from './routes/auth.js'
+import ordersRouter from './routes/orders.js'
 
 dotenv.config()
 connectDB()
@@ -19,5 +20,8 @@ app.use('/api/seals', sealsRouter)
 
 // Alla anrop som börjar med /api/auth skickas till authRouter
 app.use('/api/auth', authRouter)
+
+// Alla anrop som börjar med /api/orders skickas till ordersRouter
+app.use('/api/orders', ordersRouter)
 
 app.listen(PORT, () => console.log(`Servern körs på port ${PORT}`))
