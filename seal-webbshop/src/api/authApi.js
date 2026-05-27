@@ -1,4 +1,4 @@
-const API = 'http://localhost:5000/api'
+const API = import.meta.env.VITE_API_URL
 
 // Loggar in en användare - skickar email och lösenord till backenden
 // Backenden jämför med bcrypt och svarar med token + användarinfo om det stämmer

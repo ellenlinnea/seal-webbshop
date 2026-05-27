@@ -6,7 +6,7 @@ import { useAuth } from './AuthContext'
 // Gäst: sparas i localStorage precis som innan
 const FavsContext = createContext()
 
-const API = 'http://localhost:5000/api'
+const API = import.meta.env.VITE_API_URL
 
 export function FavsProvider({ children }) {
   const { user } = useAuth()

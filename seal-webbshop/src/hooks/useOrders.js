@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 
-const API = 'http://localhost:5000/api'
+const API = import.meta.env.VITE_API_URL
 
 // Skickar en ny order till databasen
 // Skickar med token om användaren är inloggad - annars behandlas det som ett gästköp
