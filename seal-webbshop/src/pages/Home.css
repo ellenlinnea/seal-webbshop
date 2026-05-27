@@ -131,6 +131,17 @@
   align-items: center;
 }
 
+.daily__card--empty {
+  justify-content: center;
+  padding: 48px 0;
+}
+
+.daily__empty {
+  font-size: 18px;
+  color: var(--text-secondary);
+  font-style: italic;
+}
+
 .daily__img-wrap {
   flex: 1;
   border-radius: 20px;

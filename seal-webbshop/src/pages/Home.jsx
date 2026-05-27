@@ -21,11 +21,17 @@ function Home() {
     [seals]
   )
 
-  // Väljer en slumpmässig säl som "dagens säl" - varje gång sidan laddas om just nu...
-  const dailySeal = useMemo(
-    () => seals.length ? seals[Math.floor(Math.random() * seals.length)] : null,
-    [seals]
-  )
+  // useMemo är en inbyggd React-hook som cachar resultatet och bara räknar om när seals ändras
+  // Väljer dagens säl baserat på datum - samma säl hela dagen, ny säl varje dag
+  // Filtrerar bort sålda sälar så att en såld säl aldrig visas som dagens säl
+  const dailySeal = useMemo(() => {
+    const available = seals.filter(s => s.available)
+    if (!available.length) return null
+    const today = new Date()
+    const startOfYear = new Date(today.getFullYear(), 0, 0)
+    const dayOfYear = Math.floor((today - startOfYear) / (1000 * 60 * 60 * 24))
+    return available[dayOfYear % available.length]
+  }, [seals])
 
   return (
     <main>
@@ -41,7 +47,16 @@ function Home() {
         </div>
       </section>
 
-      {/* Dagens säl visas bara om en säl faktiskt hämtats */}
+      {/* Dagens säl - visas inte alls om alla sälar är sålda */}
+      {!loading && !dailySeal && (
+        <section className="daily">
+          <p className="daily__eyebrow">Dagens säl</p>
+          <div className="daily__card daily__card--empty">
+            <p className="daily__empty">Nya sälar kommer snart — håll utkik!</p>
+          </div>
+        </section>
+      )}
+
       {dailySeal && (
         <section className="daily">
           <p className="daily__eyebrow">Dagens säl</p>
