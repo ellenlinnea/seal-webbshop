@@ -262,6 +262,19 @@
     min-height: 44px;
   }
 
+  .header__logo-img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .header__logo-name {
+    font-size: 18px;
+  }
+
+  .header__logo-sub {
+    display: none;
+  }
+
   /* Ikonknapparna får lite mer klickyta på mobil */
   .header__icon-btn {
     padding: 10px;
