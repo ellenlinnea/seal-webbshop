@@ -13,7 +13,9 @@ connectDB()
 const app = express()
 const PORT = process.env.PORT || 5000
 
-app.use(cors({ origin: 'http://localhost:5173' }))
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://seal-webbshop.onrender.com']
+}))
 app.use(express.json())
 
 // Alla anrop som börjar med /api/seals skickas till sealsRouter
