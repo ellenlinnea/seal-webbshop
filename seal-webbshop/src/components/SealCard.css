@@ -69,7 +69,8 @@
 .seal-card__meta {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
+  flex-wrap: wrap;
 }
 
 .seal-card__badge {
@@ -157,15 +158,18 @@
 }
 
 @media (max-width: 768px) {
-  /* Hjärtknappen får 44x44px klickyta på mobil */
   .seal-card__fav {
     width: 44px;
     height: 44px;
   }
 
-  /* Köp-knappen får större klickyta */
   .seal-card__btn {
     min-height: 44px;
-    padding: 8px 16px;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .seal-card__price {
+    font-size: 14px;
   }
 }
