@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 
-// Bas-URL till json-server, byter bara här när riktig backend
-const API = 'http://localhost:3001'
+const API = 'http://localhost:5000/api'
 
 // Hämtar alla sälar från databasen
 export function useSeals() {

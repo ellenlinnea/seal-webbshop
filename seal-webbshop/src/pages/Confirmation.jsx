@@ -25,7 +25,7 @@ function Confirmation() {
   return (
     <div className="confirmation">
       <div className="confirmation__top">
-        <p className="confirmation__eyebrow">Ordernummer #{order.id}</p>
+        <p className="confirmation__eyebrow">Ordernummer #{order._id}</p>
         <h1 className="confirmation__title">Tack för ditt <em>köp!</em></h1>
         <p className="confirmation__sub">
           En bekräftelse har skickats till <strong>{order.customer.email}</strong>.<br />
@@ -36,7 +36,7 @@ function Confirmation() {
       {/* Visar vilka sälar som ingick i ordern */}
       <div className="confirmation__items">
         {order.items.map(item => (
-          <div key={item.id} className="confirmation__item">
+          <div key={item._id} className="confirmation__item">
             <img src={item.image} alt={item.name} className="confirmation__item-img" />
             <div className="confirmation__item-info">
               <h3 className="confirmation__item-name">{item.name}</h3>

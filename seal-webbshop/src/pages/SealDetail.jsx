@@ -13,7 +13,7 @@ function SealDetail() {
   const { toggleFav, isFav } = useFavs()
 
   // Kollar om sälen redan ligger i varukorgen för att gråa ut knappen
-  const inCart = cart.some(item => item.id === seal?.id)
+  const inCart = cart.some(item => item._id === seal?._id)
 
   // Visar laddningstext medan data hämtas, eller felmeddelande om sälen inte finns
   if (loading) return <p className="seal-detail__loading">Hämtar säl...</p>
@@ -38,11 +38,11 @@ function SealDetail() {
             </div>
             {/* Hjärtknapp för att lägga till/ta bort från favoriter */}
             <button
-              className={`seal-detail__fav ${isFav(seal.id) ? 'seal-detail__fav--active' : ''}`}
+              className={`seal-detail__fav ${isFav(seal._id) ? 'seal-detail__fav--active' : ''}`}
               onClick={() => toggleFav(seal)}
-              aria-label={isFav(seal.id) ? 'Ta bort från favoriter' : 'Lägg till i favoriter'}
+              aria-label={isFav(seal._id) ? 'Ta bort från favoriter' : 'Lägg till i favoriter'}
             >
-              {isFav(seal.id) ? '♥' : '♡'}
+              {isFav(seal._id) ? '♥' : '♡'}
             </button>
           </div>
 
@@ -89,9 +89,9 @@ function SealDetail() {
             <button
               className={`seal-detail__btn ${inCart ? 'seal-detail__btn--in-cart' : ''}`}
               onClick={() => addToCart(seal)}
-              disabled={inCart}
+              disabled={inCart || !seal.available}
             >
-              {inCart ? 'Tillagd i varukorg' : 'Köp'}
+              {!seal.available ? 'Såld' : inCart ? 'Tillagd i varukorg' : 'Köp'}
             </button>
           </div>
         </div>

@@ -1,13 +1,13 @@
 import { Link } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
-import { useOrdersByEmail } from '../hooks/useOrders'
+import { useMyOrders } from '../hooks/useOrders'
 import './Profile.css'
 
 function Profile() {
   const { user, logout } = useAuth()
 
-  // Hämtar alla ordrar kopplade till användarens e-post
-  const { orders, loading, error } = useOrdersByEmail(user.email)
+  // Hämtar alla ordrar för den inloggade användaren via backenden
+  const { orders, loading, error } = useMyOrders()
 
   return (
     <div className="profile">
@@ -37,12 +37,12 @@ function Profile() {
 
         {/* Listar varje order som ett kort */}
         {orders.map(order => (
-          <div key={order.id} className="profile__order">
+          <div key={order._id} className="profile__order">
             <div className="profile__order-header">
               <div>
-                <p className="profile__order-id">Order #{order.id}</p>
+                <p className="profile__order-id">Order #{order._id}</p>
                 <p className="profile__order-date">
-                  {new Date(order.date).toLocaleDateString('sv-SE', {
+                  {new Date(order.createdAt).toLocaleDateString('sv-SE', {
                     year: 'numeric', month: 'long', day: 'numeric'
                   })}
                 </p>
@@ -53,7 +53,7 @@ function Profile() {
             {/* Sälarna som ingick i ordern */}
             <div className="profile__order-items">
               {order.items.map(item => (
-                <div key={item.id} className="profile__order-item">
+                <div key={item._id} className="profile__order-item">
                   <img src={item.image} alt={item.name} className="profile__order-img" />
                   <div>
                     <p className="profile__order-name">{item.name}</p>

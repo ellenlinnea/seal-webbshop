@@ -5,7 +5,7 @@ import './SealCard.css'
 function SealCard({ seal, onAddToCart, onToggleFav, isFav = false }) {
   return (
     <article className="seal-card">
-      <Link to={`/salar/${seal.id}`} className="seal-card__img-wrap">
+      <Link to={`/salar/${seal._id}`} className="seal-card__img-wrap">
         {/* Visar bild om den finns, annars en emoji som backup */}
         {seal.image
           ? <img src={seal.image} alt={seal.name} className="seal-card__img" />
@@ -25,12 +25,13 @@ function SealCard({ seal, onAddToCart, onToggleFav, isFav = false }) {
 
       <div className="seal-card__body">
         <div className="seal-card__meta">
+          {!seal.available && <span className="seal-card__badge seal-card__badge--sold">Såld</span>}
           {seal.housetrained && <span className="seal-card__badge">Rumsren</span>}
           <span className="seal-card__size">{seal.size}</span>
         </div>
 
         <div className="seal-card__name-row">
-          <Link to={`/salar/${seal.id}`} className="seal-card__name-link">
+          <Link to={`/salar/${seal._id}`} className="seal-card__name-link">
             <h3 className="seal-card__name">{seal.name}</h3>
           </Link>
           <span className="seal-card__age">{seal.age} år</span>
@@ -43,8 +44,10 @@ function SealCard({ seal, onAddToCart, onToggleFav, isFav = false }) {
           <button
             className="seal-card__btn"
             onClick={() => onAddToCart(seal)}
+            disabled={!seal.available} 
           >
-            Köp
+            {seal.available ? 'Köp' : 'Såld'}
+            {/* toggla om knappen är klickbar eller inte samt köp/såld-text beroende på tillgänglighet (avalible_true/false) */}
           </button>
         </div>
       </div>

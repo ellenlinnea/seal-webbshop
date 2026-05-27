@@ -32,7 +32,7 @@ function Cart() {
         {/* Lista med sälar */}
         <div className="cart__items">
           {cart.map(item => (
-            <div key={item.id} className="cart__item">
+            <div key={item._id} className="cart__item">
               <img src={item.image} alt={item.name} className="cart__item-img" />
               <div className="cart__item-info">
                 <h3 className="cart__item-name">{item.name}</h3>
@@ -45,7 +45,7 @@ function Cart() {
                 {/* Tar bort sälen från varukorgen */}
                 <button
                   className="cart__item-remove"
-                  onClick={() => removeFromCart(item.id)}
+                  onClick={() => removeFromCart(item._id)}
                   aria-label={`Ta bort ${item.name} från varukorgen`}
                 >
                   Ta bort
@@ -61,7 +61,7 @@ function Cart() {
 
           <div className="cart__summary-rows">
             {cart.map(item => (
-              <div key={item.id} className="cart__summary-row">
+              <div key={item._id} className="cart__summary-row">
                 <span>{item.name}</span>
                 <span>{item.price.toLocaleString('sv-SE')} kr</span>
               </div>

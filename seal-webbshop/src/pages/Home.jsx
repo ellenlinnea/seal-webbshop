@@ -61,8 +61,11 @@ function Home() {
               </div>
               <div className="daily__actions">
                 <span className="daily__price">{dailySeal.price.toLocaleString('sv-SE')} kr</span>
-                <button className="daily__btn" onClick={() => addToCart(dailySeal)}>Köp</button>
-                <Link to={`/salar/${dailySeal.id}`} className="daily__more">Läs mer →</Link>
+                <button className="daily__btn" onClick={() => addToCart(dailySeal)} disabled={!dailySeal.available}>
+                  {dailySeal.available ? 'Köp' : 'Såld'}
+                  {/* toggla om knappen är klickbar eller inte samt köp/såld-text beroende på tillgänglighet (avalible_true/false) */}
+                </button>
+                <Link to={`/salar/${dailySeal._id}`} className="daily__more">Läs mer →</Link>
               </div>
             </div>
           </div>
@@ -83,11 +86,11 @@ function Home() {
             {popularSeals.map(seal => (
               // Varje SealCard får säl-data och funktioner för köp och favorit
               <SealCard
-                key={seal.id}
+                key={seal._id}
                 seal={seal}
                 onAddToCart={addToCart}
                 onToggleFav={toggleFav}
-                isFav={isFav(seal.id)}
+                isFav={isFav(seal._id)}
               />
             ))}
           </div>

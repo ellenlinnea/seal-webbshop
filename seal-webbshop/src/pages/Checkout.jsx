@@ -75,7 +75,7 @@ function Checkout() {
     try {
       const savedOrder = await createOrder(cart, form, total)
       clearCart()
-      navigate(`/bekraftelse/${savedOrder.id}`)
+      navigate(`/bekraftelse/${savedOrder._id}`)
     } catch (err) {
       setError('Det gick inte att skicka ordern. Försök igen.')
       setLoading(false)
@@ -205,7 +205,7 @@ function Checkout() {
 
           <div className="checkout__summary-items">
             {cart.map(item => (
-              <div key={item.id} className="checkout__summary-item">
+              <div key={item._id} className="checkout__summary-item">
                 <img src={item.image} alt={item.name} className="checkout__summary-img" />
                 <div>
                   <p className="checkout__summary-name">{item.name}</p>

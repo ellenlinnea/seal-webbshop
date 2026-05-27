@@ -35,7 +35,7 @@ function Favs() {
       <div className="favs__grid">
         {favs.map(seal => (
           <SealCard
-            key={seal.id}
+            key={seal._id}
             seal={seal}
             onAddToCart={addToCart}
             onToggleFav={toggleFav}

@@ -24,7 +24,7 @@ export function CartProvider({ children }) {
 
   // Lägger till en säl i varukorgen - ska bara gå att lägga till om den inte redan finns där
   function addToCart(seal) {
-    const exists = cart.find(item => item.id === seal.id)
+    const exists = cart.find(item => item._id === seal._id)
     if (exists) return
     saveCart([...cart, seal])
     setAddedSeal(seal) // Visar popupen med denna säl
@@ -37,7 +37,7 @@ export function CartProvider({ children }) {
 
   // Tar bort en säl från varukorgen baserat på id
   function removeFromCart(sealId) {
-    saveCart(cart.filter(item => item.id !== sealId))
+    saveCart(cart.filter(item => item._id !== sealId))
   }
 
   // Tömmer hela varukorgen, t.ex. efter genomförd beställning

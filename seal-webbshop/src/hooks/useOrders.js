@@ -1,21 +1,19 @@
 import { useState, useEffect } from 'react'
 
-const API = 'http://localhost:3001'
+const API = 'http://localhost:5000/api'
 
 // Skickar en ny order till databasen
-// Returnerar den sparade ordern med id om det gick bra, annars kastas ett fel
+// Skickar med token om användaren är inloggad - annars behandlas det som ett gästköp
 export async function createOrder(cart, customer, total) {
-  const order = {
-    customer,
-    items: cart,
-    total,
-    date: new Date().toISOString()
-  }
+  const token = localStorage.getItem('seal-token')
+
+  const headers = { 'Content-Type': 'application/json' }
+  if (token) headers['Authorization'] = `Bearer ${token}`
 
   const res = await fetch(`${API}/orders`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(order)
+    headers,
+    body: JSON.stringify({ customer, items: cart, total })
   })
 
   if (!res.ok) throw new Error('Något gick fel när ordern skickades')
@@ -32,32 +30,32 @@ export async function getOrder(id) {
   return res.json()
 }
 
-// Hämtar alla ordrar för den inloggade användaren, baserat på e-post
-// Fungerar precis som useSeals - returnerar orders, loading och error
-export function useOrdersByEmail(email) {
+// Hämtar alla ordrar för den inloggade användaren via /orders/mine
+// Backenden läser token och vet automatiskt vems ordrar som ska hämtas
+export function useMyOrders() {
   const [orders, setOrders] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    if (!email) return
+    const token = localStorage.getItem('seal-token')
 
-    fetch(`${API}/orders?customer.email=${email}`)
+    fetch(`${API}/orders/mine`, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
       .then(res => {
         if (!res.ok) throw new Error('Kunde inte hämta ordrar')
         return res.json()
       })
       .then(data => {
-        // Lägger senaste ordern överst
-        const sorted = [...data].sort((a, b) => new Date(b.date) - new Date(a.date))
-        setOrders(sorted)
+        setOrders(data)
         setLoading(false)
       })
       .catch(err => {
         setError(err.message)
         setLoading(false)
       })
-  }, [email])
+  }, [])
 
   return { orders, loading, error }
 }

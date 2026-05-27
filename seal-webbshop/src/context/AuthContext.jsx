@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from 'react'
-import { loginUser, registerUser } from '../hooks/useUsers'
+import { loginUser, registerUser } from '../api/authApi'
 
 const AuthContext = createContext()
 
@@ -10,31 +10,30 @@ export function AuthProvider({ children }) {
     return saved ? JSON.parse(saved) : null
   })
 
-  // Hjälpfunktion som uppdaterar både state och localStorage
-  function saveUser(userData) {
+  // Sparar användare i state och både användare och token i localStorage
+  function saveSession(userData, token) {
     setUser(userData)
     localStorage.setItem('seal-user', JSON.stringify(userData))
+    localStorage.setItem('seal-token', token)
   }
 
-  // Loggin-funktion som anropar hook
+  // Loggar in - backenden returnerar { token, user }, inget lösenord i svaret
   async function login(email, password) {
-    const loggedInUser = await loginUser(email, password)
-    // För att inte spara lösenordet tillsammans med användarinformationen. Destruction?
-    const { password: _pw, ...safeUser } = loggedInUser
-    saveUser(safeUser)
+    const { token, user } = await loginUser(email, password)
+    saveSession(user, token)
   }
 
-  // Registrera användare + loggar in direkt efter
+  // Registrerar användare och loggar in direkt - backenden returnerar { token, user }
   async function register(name, email, password) {
-    const newUser = await registerUser(name, email, password)
-    const { password: _pw, ...safeUser } = newUser
-    saveUser(safeUser)
+    const { token, user } = await registerUser(name, email, password)
+    saveSession(user, token)
   }
 
-  // Loggar ut - rensar state och localStorage
+  // Loggar ut - rensar state och tar bort både användare och token från localStorage
   function logout() {
     setUser(null)
     localStorage.removeItem('seal-user')
+    localStorage.removeItem('seal-token')
   }
 
   return (

@@ -157,11 +157,11 @@ function SealList() {
             <div className="seal-list-page__grid">
               {filteredSeals.map(seal => (
                 <SealCard
-                  key={seal.id}
+                  key={seal._id}
                   seal={seal}
                   onAddToCart={addToCart}
                   onToggleFav={toggleFav}
-                  isFav={isFav(seal.id)}
+                  isFav={isFav(seal._id)}
                 />
               ))}
             </div>
