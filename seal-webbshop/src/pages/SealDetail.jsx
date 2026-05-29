@@ -64,7 +64,7 @@ function SealDetail() {
             </div>
             <div className="seal-detail__fact">
               <span className="seal-detail__fact-label">Kön</span>
-              <span className="seal-detail__fact-value">{seal.sex}</span>
+              <span className="seal-detail__fact-value">{seal.gender === 'hane' ? 'Hane' : seal.gender === 'hona' ? 'Hona' : ''}</span>
             </div>
             <div className="seal-detail__fact">
               <span className="seal-detail__fact-label">Rumsren</span>
