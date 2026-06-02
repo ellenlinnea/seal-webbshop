@@ -61,6 +61,7 @@ function AppContent() {
 function App() {
   return (
     <BrowserRouter>
+      {/* ScrollToTopp körs vid varje sidbyte för att scrolla upp till toppen av sidan */}
       <ScrollToTop />
       <AuthProvider>
         <CartProvider>
