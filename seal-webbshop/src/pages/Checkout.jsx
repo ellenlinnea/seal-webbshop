@@ -17,9 +17,11 @@ function Checkout() {
     address: '',
     city: '',
     zip: '',
+    paymentMethod: 'card',
     cardNumber: '',
     cardExpiry: '',
-    cardCvc: ''
+    cardCvc: '',
+    swishPhone: ''
   })
 
   const [loading, setLoading] = useState(false)
@@ -65,6 +67,14 @@ function Checkout() {
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value })
+  }
+
+  // Hjälpfunktion för att visa egna felmeddelanden istället för webbläsarens standard
+  function validation(message) {
+    return {
+      onInvalid: (e) => e.target.setCustomValidity(message),
+      onInput: (e) => e.target.setCustomValidity('')
+    }
   }
 
   async function handleSubmit(e) {
@@ -142,12 +152,12 @@ function Checkout() {
 
             <div className="checkout__field">
               <label htmlFor="name">Namn</label>
-              <input id="name" name="name" type="text" value={form.name} onChange={handleChange} placeholder="Förnamn Efternamn" required />
+              <input id="name" name="name" type="text" value={form.name} onChange={handleChange} placeholder="Förnamn Efternamn" required {...validation('Fyll i ditt fullständiga namn')} />
             </div>
 
             <div className="checkout__field">
               <label htmlFor="email">E-post</label>
-              <input id="email" name="email" type="email" value={form.email} onChange={handleChange} placeholder="din@epost.se" required />
+              <input id="email" name="email" type="email" value={form.email} onChange={handleChange} placeholder="din@epost.se" required {...validation('Fyll i en giltig e-postadress, t.ex. namn@exempel.se')} />
             </div>
           </div>
 
@@ -156,17 +166,17 @@ function Checkout() {
 
             <div className="checkout__field">
               <label htmlFor="address">Gatuadress</label>
-              <input id="address" name="address" type="text" value={form.address} onChange={handleChange} placeholder="Storgatan 1" required />
+              <input id="address" name="address" type="text" value={form.address} onChange={handleChange} placeholder="Storgatan 1" required {...validation('Fyll i din gatuadress, t.ex. Storgatan 1')} />
             </div>
 
             <div className="checkout__field-row">
               <div className="checkout__field">
                 <label htmlFor="zip">Postnummer</label>
-                <input id="zip" name="zip" type="text" value={form.zip} onChange={handleChange} placeholder="123 45" required />
+                <input id="zip" name="zip" type="text" value={form.zip} onChange={handleChange} placeholder="123 45" pattern="\d{3} ?\d{2}" required {...validation('Fyll i ett giltigt postnummer (5 siffror, t.ex. 123 45)')} />
               </div>
               <div className="checkout__field">
                 <label htmlFor="city">Ort</label>
-                <input id="city" name="city" type="text" value={form.city} onChange={handleChange} placeholder="Stockholm" required />
+                <input id="city" name="city" type="text" value={form.city} onChange={handleChange} placeholder="Stockholm" required {...validation('Fyll i din ort, t.ex. Stockholm')} />
               </div>
             </div>
             <p className="checkout__payment-note">Vi levererar hem till dig! Sälen levereras inpackad i våtdräkt och med fisk för två dagar.</p>
@@ -175,21 +185,48 @@ function Checkout() {
           <div className="checkout__section">
             <h2 className="checkout__section-title">Betalning</h2>
 
-            <div className="checkout__field">
-              <label htmlFor="cardNumber">Kortnummer</label>
-              <input id="cardNumber" name="cardNumber" type="text" value={form.cardNumber} onChange={handleChange} placeholder="1234 5678 9012 3456" maxLength={19} required />
+            {/* Val mellan kort och swish - styr vilka fält som visas nedan */}
+            <div className="checkout__payment-methods">
+              <button
+                type="button"
+                className={`checkout__payment-method ${form.paymentMethod === 'card' ? 'checkout__payment-method--active' : ''}`}
+                onClick={() => setForm({ ...form, paymentMethod: 'card' })}
+              >
+                Kort
+              </button>
+              <button
+                type="button"
+                className={`checkout__payment-method ${form.paymentMethod === 'swish' ? 'checkout__payment-method--active' : ''}`}
+                onClick={() => setForm({ ...form, paymentMethod: 'swish' })}
+              >
+                Swish
+              </button>
             </div>
 
-            <div className="checkout__field-row">
+            {form.paymentMethod === 'card' ? (
+              <>
+                <div className="checkout__field">
+                  <label htmlFor="cardNumber">Kortnummer</label>
+                  <input id="cardNumber" name="cardNumber" type="text" value={form.cardNumber} onChange={handleChange} placeholder="1234 5678 9012 3456" maxLength={19} required {...validation('Fyll i ditt kortnummer (16 siffror)')} />
+                </div>
+
+                <div className="checkout__field-row">
+                  <div className="checkout__field">
+                    <label htmlFor="cardExpiry">Utgår MM/ÅÅ</label>
+                    <input id="cardExpiry" name="cardExpiry" type="text" value={form.cardExpiry} onChange={handleChange} placeholder="MM/ÅÅ" maxLength={5} pattern="\d{2}/\d{2}" required {...validation('Fyll i utgångsdatum i formatet MM/ÅÅ, t.ex. 09/27')} />
+                  </div>
+                  <div className="checkout__field">
+                    <label htmlFor="cardCvc">CVC</label>
+                    <input id="cardCvc" name="cardCvc" type="text" value={form.cardCvc} onChange={handleChange} placeholder="123" maxLength={3} pattern="\d{3}" required {...validation('Fyll i CVC-koden (3 siffror på baksidan av kortet)')} />
+                  </div>
+                </div>
+              </>
+            ) : (
               <div className="checkout__field">
-                <label htmlFor="cardExpiry">Utgår MM/ÅÅ</label>
-                <input id="cardExpiry" name="cardExpiry" type="text" value={form.cardExpiry} onChange={handleChange} placeholder="MM/ÅÅ" maxLength={5} required />
+                <label htmlFor="swishPhone">Telefonnummer</label>
+                <input id="swishPhone" name="swishPhone" type="tel" value={form.swishPhone} onChange={handleChange} placeholder="070 123 45 67" required {...validation('Fyll i ditt telefonnummer för Swish, t.ex. 070 123 45 67')} />
               </div>
-              <div className="checkout__field">
-                <label htmlFor="cardCvc">CVC</label>
-                <input id="cardCvc" name="cardCvc" type="text" value={form.cardCvc} onChange={handleChange} placeholder="123" maxLength={3} required />
-              </div>
-            </div>
+            )}
           </div>
 
           {error && <p className="checkout__error">{error}</p>}

@@ -114,6 +114,8 @@
 .daily {
   background: var(--bg-secondary);
   padding: 64px;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
 }
 
 .daily__eyebrow {
@@ -246,6 +248,7 @@
   gap: 0;
   background: var(--bg-secondary);
   border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
 }
 
 .trust__spacer {

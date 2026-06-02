@@ -241,6 +241,36 @@
   line-height: 1.5;
 }
 
+/* Val mellan kort och swish */
+.checkout__payment-methods {
+  display: flex;
+  gap: 12px;
+}
+
+.checkout__payment-method {
+  flex: 1;
+  background: var(--bg-card);
+  border: 1px solid var(--border-dark);
+  border-radius: 10px;
+  padding: 14px 20px;
+  font-size: 14px;
+  font-weight: 500;
+  font-family: var(--font-sans);
+  color: var(--dark-primary);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.checkout__payment-method:hover {
+  border-color: var(--dark-primary);
+}
+
+.checkout__payment-method--active {
+  background: var(--dark-primary);
+  color: var(--bg-primary);
+  border-color: var(--dark-primary);
+}
+
 .checkout__error {
   font-size: 13px;
   color: var(--accent-coral);
