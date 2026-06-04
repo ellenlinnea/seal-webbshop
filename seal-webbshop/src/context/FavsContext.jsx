@@ -1,12 +1,11 @@
 import { createContext, useContext, useState, useEffect } from 'react'
 import { useAuth } from './AuthContext'
+import { getFavorites, addFavorite, removeFavorite } from '../api/favsApi'
 
 // Context för att hantera favoritlistan
 // Inloggad användare: synkas mot backenden
 // Gäst: sparas i localStorage precis som innan
 const FavsContext = createContext()
-
-const API = import.meta.env.VITE_API_URL
 
 export function FavsProvider({ children }) {
   const { user } = useAuth()
@@ -17,49 +16,52 @@ export function FavsProvider({ children }) {
     return saved ? JSON.parse(saved) : []
   })
 
-  // Om användaren loggar in - hämta favoriter från backenden istället
+  // Om användaren loggar in - migrera ev. gäst-favoriter från localStorage till backenden
+  // och hämta sedan den uppdaterade listan
   // Om användaren loggar ut - läs tillbaka från localStorage
   useEffect(() => {
-    if (user) {
-      const token = localStorage.getItem('seal-token')
-      fetch(`${API}/favorites`, {
-        headers: { Authorization: `Bearer ${token}` }
-      })
-        .then(res => res.json())
-        .then(data => setFavs(data))
-        .catch(() => setFavs([]))
-    } else {
-      const saved = localStorage.getItem('seal-favs')
-      setFavs(saved ? JSON.parse(saved) : [])
+    async function syncFavs() {
+      if (user) {
+        const token = localStorage.getItem('seal-token')
+
+        // Kollar om det finns favoriter sparade i localStorage från när användaren var gäst
+        const guestFavs = JSON.parse(localStorage.getItem('seal-favs') || '[]')
+
+        // Skickar över ev. gäst-favoriter till backenden så de sparas på kontot
+        // Backendens $addToSet hanterar dubbletter automatiskt
+        if (guestFavs.length > 0) {
+          await Promise.all(guestFavs.map(seal => addFavorite(token, seal._id)))
+          // Rensar gäst-favoriterna nu när de har sparats på kontot
+          localStorage.removeItem('seal-favs')
+        }
+
+        // Hämtar den slutgiltiga listan från backenden
+        try {
+          const data = await getFavorites(token)
+          setFavs(data)
+        } catch {
+          setFavs([])
+        }
+      } else {
+        const saved = localStorage.getItem('seal-favs')
+        setFavs(saved ? JSON.parse(saved) : [])
+      }
     }
+    syncFavs()
   }, [user])
 
   // Lägger till eller tar bort en säl från favoriter
   async function toggleFav(seal) {
     if (user) {
-      // Inloggad: synka med backenden
+      // Inloggad: synka med backenden via favsApi
       const token = localStorage.getItem('seal-token')
       const exists = favs.some(f => f._id === seal._id)
 
-      if (exists) {
-        const res = await fetch(`${API}/favorites/${seal._id}`, {
-          method: 'DELETE',
-          headers: { Authorization: `Bearer ${token}` }
-        })
-        const updated = await res.json()
-        setFavs(updated)
-      } else {
-        const res = await fetch(`${API}/favorites`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${token}`
-          },
-          body: JSON.stringify({ sealId: seal._id })
-        })
-        const updated = await res.json()
-        setFavs(updated)
-      }
+      const updated = exists
+        ? await removeFavorite(token, seal._id)
+        : await addFavorite(token, seal._id)
+
+      setFavs(updated)
     } else {
       // Gäst: spara i localStorage precis som innan
       const exists = favs.find(f => f._id === seal._id)
