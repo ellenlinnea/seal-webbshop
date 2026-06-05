@@ -88,7 +88,7 @@
   font-family: var(--font-sans);
 }
 
-.filters__chip:hover {
+.filters__chip:not(.filters__chip--active):hover {
   border-color: var(--dark-primary);
   color: var(--dark-primary);
 }
