@@ -91,10 +91,15 @@
   transition: all 0.15s;
 }
 
-.seal-detail__fav:hover,
+.seal-detail__fav:hover:not(:disabled),
 .seal-detail__fav--active {
   color: var(--accent-coral);
   border-color: var(--accent-coral);
+}
+
+.seal-detail__fav:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 .seal-detail__bio {

@@ -15,6 +15,7 @@ function SealCard({ seal, onAddToCart, onToggleFav, isFav = false }) {
           className={`seal-card__fav ${isFav ? 'seal-card__fav--active' : ''}`}
           aria-label={isFav ? `Ta bort ${seal.name} från favoriter` : `Lägg till ${seal.name} i favoriter`}
           onClick={(e) => { e.preventDefault(); onToggleFav(seal) }}
+          disabled={!seal.available && !isFav} /*Om sälen är såld kan man inte favoritmarkera*/
         >
           {/* SVG-hjärta: fyllt när favoritmarkerat, kontur annars */}
           <svg width="18" height="18" viewBox="0 0 24 24" fill={isFav ? 'currentColor' : 'none'} stroke={isFav ? 'none' : 'currentColor'} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">

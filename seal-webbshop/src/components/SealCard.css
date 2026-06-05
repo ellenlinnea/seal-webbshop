@@ -52,10 +52,15 @@
   color: var(--dark-tertiary);
 }
 
-.seal-card__fav:hover,
+.seal-card__fav:hover:not(:disabled),
 .seal-card__fav--active {
   color: var(--accent-coral);
   border-color: var(--accent-coral);
+}
+
+.seal-card__fav:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
 }
 
 .seal-card__body {

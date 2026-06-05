@@ -288,6 +288,26 @@
   line-height: 1.6;
 }
 
+/* Tablet portrait: 3 kolumner istället för 4 så sälkorten får mer plats */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .popular {
+    padding: 56px 32px;
+  }
+
+  .popular__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .daily {
+    padding: 56px 32px;
+  }
+
+  .trust__item {
+    padding: 40px 32px;
+  }
+}
+
 @media (max-width: 768px) {
   /* Hero */
   .hero {

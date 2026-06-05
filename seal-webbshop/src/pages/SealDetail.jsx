@@ -41,6 +41,7 @@ function SealDetail() {
               className={`seal-detail__fav ${isFav(seal._id) ? 'seal-detail__fav--active' : ''}`}
               onClick={() => toggleFav(seal)}
               aria-label={isFav(seal._id) ? 'Ta bort från favoriter' : 'Lägg till i favoriter'}
+              disabled={!seal.available && !isFav(seal._id)}
             >
               {isFav(seal._id) ? '♥' : '♡'}
             </button>

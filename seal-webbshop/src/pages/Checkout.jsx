@@ -31,6 +31,11 @@ function Checkout() {
   useEffect(() => {
     if (user) {
       setForm(prev => ({ ...prev, name: user.name, email: user.email }))
+
+      // Rensar ev. lingerande customValidity på de autofyllda fälten
+      // onInput triggas inte när värdet sätts via state, så måste göra det manuellt
+      document.getElementById('name')?.setCustomValidity('')
+      document.getElementById('email')?.setCustomValidity('')
     }
   }, [user])
 

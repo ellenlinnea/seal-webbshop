@@ -52,10 +52,15 @@ export function FavsProvider({ children }) {
 
   // Lägger till eller tar bort en säl från favoriter
   async function toggleFav(seal) {
+    const exists = favs.some(f => f._id === seal._id)
+
+    // En såld säl ska inte kunna läggas till som ny favorit
+    // Befintliga favoriter går att ta bort även om sälen blivit såld
+    if (!seal.available && !exists) return
+
     if (user) {
       // Inloggad: synka med backenden via favsApi
       const token = localStorage.getItem('seal-token')
-      const exists = favs.some(f => f._id === seal._id)
 
       const updated = exists
         ? await removeFavorite(token, seal._id)
@@ -64,7 +69,6 @@ export function FavsProvider({ children }) {
       setFavs(updated)
     } else {
       // Gäst: spara i localStorage precis som innan
-      const exists = favs.find(f => f._id === seal._id)
       const newFavs = exists ? favs.filter(f => f._id !== seal._id) : [...favs, seal]
       setFavs(newFavs)
       localStorage.setItem('seal-favs', JSON.stringify(newFavs))
