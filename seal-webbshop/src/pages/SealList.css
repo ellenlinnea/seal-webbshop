@@ -165,28 +165,8 @@
   display: none;
 }
 
-/* Tablet portrait: smalare sidebar och 2 kolumner istället för 3 */
-@media (min-width: 769px) and (max-width: 1024px) {
-  .seal-list-page {
-    padding: 40px 32px;
-  }
-
-  .seal-list-page__layout {
-    grid-template-columns: 240px 1fr;
-    gap: 32px;
-  }
-
-  .filters {
-    padding: 24px;
-  }
-
-  .seal-list-page__grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-}
-
-@media (max-width: 768px) {
+/* Filter-kollapsen gäller även på surfplatta i porträttläge */
+@media (max-width: 1024px) {
   .seal-list-page {
     padding: 24px 16px;
   }
